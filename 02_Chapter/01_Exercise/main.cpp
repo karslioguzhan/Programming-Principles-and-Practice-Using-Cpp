@@ -6,7 +6,7 @@
 int main()
 {
 	// output Hello World!
-	cout << "Hello World!\n";
+	cout << "Hello, programming!\nHere we go!\n";
 	keep_window_open();
 	return 0;
 }

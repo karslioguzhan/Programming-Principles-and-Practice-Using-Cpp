@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{16deeb0c-f44f-45cf-bb1f-6d8148d4b8d9}</ProjectGuid>
-    <RootNamespace>FirstClassicProgram</RootNamespace>
+    <ProjectGuid>{9b385745-f4db-44f2-9331-21d442cffe00}</ProjectGuid>
+    <RootNamespace>My01Exercise</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -127,7 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="std_lib_facilities.h" />
