@@ -1,0 +1,40 @@
+Find a good cookbook. Read the instructions for baking blueberry muffins (if you are in a country where “blueberry muffins” is a strange, exotic dish, use a more familiar dish instead). Please note that with a bit of help and instruction, most of the people in the world can bake delicious blueberry muffins. It is not considered advanced or difficult fine cooking. However, for the author, few exercises in this book are as difficult as this one. It is amazing what you can do with a bit of practice.
+
+    Rewrite those instructions so that each individual action is in its own numbered paragraph. Be careful to list all ingredients and all kitchen utensils used at each step. Be careful about crucial details, such as the desired oven temperature, preheating the oven, the preparation of the muffin pan, the way to time the cooking, and the need to protect your hands when removing the muffins from the oven.
+
+    Consider those instructions from the point of view of a cooking nov- ice (if you are not one, get help from a friend who does not know how to cook). Fill in the steps that the book’s author (almost certainly an experienced cook) left out for being obvious.
+
+    Build a glossary of terms used. (What’s a muffin pan? What does preheating do? What do you mean by “oven”?)
+    Now bake some muffins and enjoy your results.
+
+Tools
+    A: Whisker
+    B: Large Bowl
+    C: Fork
+    D: Muffin sheet
+    E: Muffin paper
+
+Ingredients
+    1: Blueberries
+    2: Allpurpose flour
+    3: Sugar
+    4: Oil
+    5: Milk
+    6: Egg
+    7: Baking powder
+    8: Salt
+    9: Vanilla extract
+
+Instruction:
+    1: Add 2, 7 and a pinch 8 to B
+    2: Whisk with A the ingredients inside B
+    3: Add 4, 6, 5 and 9 to B
+    4: Use Fork to whisk ingredients inside B till you have a nice dough
+    5: Mix 1 into B
+    6: Insert E to D inside every hole
+    7: Add the ingredients of B inside every hole in D till the hole is full
+    8: Preheat oven till its reachs 200 °C
+    9: Insert D to oven
+    10: Wait 15 minutes
+    11: Take D out from oven
+    12: Enjoy

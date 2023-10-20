@@ -1,0 +1,21 @@
+Name                                    Description
+//                                      A Command
+<<                                      Insertion operator which is used for example in cout
+C++                                     The programming language used in this book
+comment                                 Comments are for humans which describes what the intention of the program or code is for example
+compiler                                The Compiler translates the source code to machine code.
+compile time error                      The errors that occur while compiling the source code. For example syntax errors.
+cout                                    A function from iostream which outputs characters
+executable                              The program that is executable for the Operating system you compiled for.
+function                                Is a set of instructions which have an return type, name, parameters and function body
+header                                  Header files are files that we include in our programs to use codes from others or own.
+IDE                                     Integrated Development Environment 
+#include                                This line includes Header files
+library                                 A Libary is a collection of function XXX
+linker                                  The linker links machine codes to an executable
+main()                                  The entry point of every C++ Program
+object code                             Is the code that is generated from the compiler, which can be read from a computer
+output                                  Output means like printing characters into your console etc.
+program                                 Is the set of instruction which does an task what it is designed for.
+source code                             Is the code that is written by a human to tell the computer what it should be do.
+statement                               A statement is an complete instruction which is executed. It ends with an semicolon
