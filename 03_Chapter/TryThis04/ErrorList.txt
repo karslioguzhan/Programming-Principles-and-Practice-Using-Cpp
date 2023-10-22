@@ -1,0 +1,4 @@
+Severity	Code	Description	Project	File	Line	Suppression State
+Error (active)	E0020	identifier "cOut" is undefined	TryThis04	C:\Users\Oguzhan\source\Programming Principles and Practice Using C++\03_Chapter\TryThis04\TryThis04.cpp	6	
+Error (active)	E0020	identifier "S" is undefined	TryThis04	C:\Users\Oguzhan\source\Programming Principles and Practice Using C++\03_Chapter\TryThis04\TryThis04.cpp	6	
+Error (active)	E0020	identifier "STRING" is undefined	TryThis04	C:\Users\Oguzhan\source\Programming Principles and Practice Using C++\03_Chapter\TryThis04\TryThis04.cpp	5	

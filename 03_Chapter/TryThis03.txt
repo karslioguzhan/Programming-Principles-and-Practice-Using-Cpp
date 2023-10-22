@@ -1,0 +1,25 @@
+Execute this program yourself using a piece of paper. Use the input "The cat cat jumped." Even experienced programmers use this technique to visualize the actions of small sections of code that somehow don’t seem completely obvious.
+
+
+Program variables
+    Input: The cat cat jumped
+    1'st run:
+        previous = " "
+        current = "The"
+        console output = /
+        previous = "The"
+    2'nd run:
+        previous = "The"
+        current = "cat"
+        console output = /
+        previous = "cat"
+    3'rd run:
+        previous = "cat"
+        current = "cat"
+        console output = "repeated word: cat"
+        previous = "cat"
+    4'th run:
+        previous = "cat"
+        current = "jumped"
+        console output = /
+        previous = "jumped"
