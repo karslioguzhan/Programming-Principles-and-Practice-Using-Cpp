@@ -21,3 +21,22 @@ output                                  Output means like printing characters in
 program                                 Is the set of instruction which does an task what it is designed for.
 source code                             Is the code that is written by a human to tell the computer what it should be do.
 statement                               A statement is an complete instruction which is executed. It ends with an semicolon
+prompt                                  A request for example inserting a char or number into command prompt
+object                                  A Object is some memory that holds a value of a given type
+variable                                A variable is a named object with type.
+definition                              Is a declartion that sets aside memory for an object.
+Initialization                          Giving a variable its initial value
+Assignment                              Giving a variable a new value
+cin                                     Is method for character input in the terminal
+Concatenation                           Is the adding of two string or objects together
+Conversion                              Is the changing from one type to an another
+Declartion                              Is a statement that gives a name to an object.
+Decrement                               Subtraction of 1 from the value of an variable --> --num
+Increment                               Addtion of 1 to the value of an variable --> ++num
+Name                                    Is the name of an object.
+Narrowing                               Are unsafe conversion where a bigger object is put to an smaller object. double to int
+Operation                               Are the operation which can be used for types.
+Operator                                Are functions that do operation like ==
+Type                                    Are the type of an object, which describes how the memory should be intepreted
+Type safety                             A Program is typesafe when objects only used according to the rules of their type.
+Value                                   Is a set of of bits in memory which intepreted according to a type.
