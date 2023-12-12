@@ -1,40 +1,83 @@
-//If we define the median of a sequence as “a number so that exactly as many elements come before it in the sequence as come after it” fix the program in §4.6.3 so that it always prints out a median. Hint: A median need not be an element of the sequence.
+// 11_Drill.cpp :
+// Before writing out the values from the vector, sort them (that’ll make them come out in increasing order).
 
 #include <iostream>
+#include <map>
 #include <vector>
 #include <algorithm>
 
 
+
 int main()
 {
-    std::vector<double> temps;
-    for (double temp; std::cin >> temp;)
-    {
-        temps.push_back(temp);
-    }
+	std::cout << "Printing doubles until | is inserted\n";
+	std::map<std::string, double> conversion
+	{
+		{"cm", 0.01},
+		{"m", 1},
+		{"in", 0.0254},
+		{"ft", 0.3048}
+	};
 
-    // compute mean temperature
-    double sum{};
-    for (int x : temps)
-    {
-        sum += x;
-    }
-    std::cout << "Average temperature: " << sum / temps.size() << "\n";
+	bool firstRun{ true };
+	double input{}, smallestDouble{}, biggestDouble{}, sumInput{};
+	int numOfInputs{};
+	std::vector<double> enteredValues;
+	std::string unit{};
+	std::cout << "Please enter one double followed by an unit (cm, m, in, ft --> Example 1.9cm): ";
+	while (std::cin >> input && std::cin >> unit)
+	{
+		if (conversion.find(unit) == conversion.end())
+		{
+			std::cout << "Illegal unit";
+			return 1;
+		}
 
-    // compute median temperature
-    std::sort(temps.begin(), temps.end());
-    double median{};
-    if (temps.size() % 2 == 1)
-    {
-        median = temps.at(temps.size() / 2);
-    }
-    else
-    {
-        int oddElement{ static_cast<int>(temps.size() / 2) - 1 };
-        std::cout << "Bin bei element: " << oddElement << "\n";
-        median = (temps.at(oddElement) + temps.at(oddElement + 1)) / 2;
-    }
-    std::cout << "Median temperature: " << median;
+		input *= conversion.at(unit);
+		sumInput += input;
+		++numOfInputs;
+		enteredValues.push_back(input);
 
-    return 0;
+		if (firstRun)
+		{
+			smallestDouble = input;
+			biggestDouble = input;
+			firstRun = false;
+		}
+
+		if (input == '|')
+		{
+			std::cout << "Terminating the program\n";
+			break;
+		}
+
+		std::cout << "You entered the double: " << input << " in m" << std::endl;
+
+		if (input < smallestDouble)
+		{
+			smallestDouble = input;
+		}
+		else if (input > biggestDouble)
+		{
+			biggestDouble = input;
+		}
+
+		if (biggestDouble - smallestDouble < 1.0 / 100)
+		{
+			std::cout << "The smallest and biggest doubles are almost equal!\n";
+		}
+		std::cout << "Please enter one double: ";
+	}
+	std::cout << "====================================================\n";
+	std::cout << "You have entered " << numOfInputs << " values\n";
+	std::sort(enteredValues.begin(), enteredValues.end());
+	for (auto value : enteredValues)
+	{
+		std::cout << value << "m ";
+	}
+	std::cout << "\nThe sum of all entered values is: " << sumInput << "m\n";
+	std::cout << "The smallest number was: " << smallestDouble << "m\n";
+	std::cout << "The biggest number was: " << biggestDouble << "m\n";
+	return 0;
+
 }
