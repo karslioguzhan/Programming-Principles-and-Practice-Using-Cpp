@@ -30,7 +30,7 @@ Assignment                              Giving a variable a new value
 cin                                     Is method for character input in the terminal
 Concatenation                           Is the adding of two string or objects together
 Conversion                              Is the changing from one type to an another
-Declartion                              Is a statement that gives a name to an object.
+Declaration                             Is a statement that gives a name to an object.
 Decrement                               Subtraction of 1 from the value of an variable --> --num
 Increment                               Addtion of 1 to the value of an variable --> ++num
 Name                                    Is the name of an object.
@@ -39,4 +39,36 @@ Operation                               Are the operation which can be used for 
 Operator                                Are functions that do operation like ==
 Type                                    Are the type of an object, which describes how the memory should be intepreted
 Type safety                             A Program is typesafe when objects only used according to the rules of their type.
-Value                                   Is a set of of bits in memory which intepreted according to a type.
+Value                                   Is a set of of bits in memory which interpreted according to a type.
+Abstraction
+begin()
+Computation
+Conditional statement
+Declaration
+Definition
+Divide and conquer
+else
+end()
+expression
+for-statement
+range-for-statement
+function
+if-statement
+Increment
+Input
+Iteration
+Loop
+lvalue
+member function
+output
+push_back()
+Repetition
+rvalue
+selection
+size()
+sort()
+statement
+switch-statement 
+vector
+while-statement
+
