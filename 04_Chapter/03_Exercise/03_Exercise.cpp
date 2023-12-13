@@ -25,6 +25,8 @@ int main()
     std::cout << "The smallest distance is: " << distancesOfCities.at(0) << "\n";
     std::cout << "The greatest distance is: " << distancesOfCities.at(distancesOfCities.size()-1) << "\n";
     std::cout << "The sum of distances are: " << sumOfDistances(distancesOfCities) << "\n";
+    std::cout << "The mean of all distances are: " << sumOfDistances(distancesOfCities) / distancesOfCities.size() << "\n";
+
     return 0;
 }
 
