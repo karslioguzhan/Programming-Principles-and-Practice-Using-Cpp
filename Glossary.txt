@@ -13,7 +13,7 @@ function                                Is a set of instructions which have an r
 header                                  Header files are files that we include in our programs to use codes from others or own.
 IDE                                     Integrated Development Environment 
 #include                                This line includes Header files
-library                                 A Libary is a collection of function XXX
+library                                 A Library is a collection of function XXX
 linker                                  The linker links machine codes to an executable
 main()                                  The entry point of every C++ Program
 object code                             Is the code that is generated from the compiler, which can be read from a computer
@@ -24,7 +24,7 @@ statement                               A statement is an complete instruction w
 prompt                                  A request for example inserting a char or number into command prompt
 object                                  A Object is some memory that holds a value of a given type
 variable                                A variable is a named object with type.
-definition                              Is a declartion that sets aside memory for an object.
+definition                              Is a declaration that sets aside memory for an object.
 Initialization                          Giving a variable its initial value
 Assignment                              Giving a variable a new value
 cin                                     Is method for character input in the terminal
@@ -32,43 +32,40 @@ Concatenation                           Is the adding of two string or objects t
 Conversion                              Is the changing from one type to an another
 Declaration                             Is a statement that gives a name to an object.
 Decrement                               Subtraction of 1 from the value of an variable --> --num
-Increment                               Addtion of 1 to the value of an variable --> ++num
+Increment                               Addition of 1 to the value of an variable --> ++num
 Name                                    Is the name of an object.
 Narrowing                               Are unsafe conversion where a bigger object is put to an smaller object. double to int
 Operation                               Are the operation which can be used for types.
 Operator                                Are functions that do operation like ==
-Type                                    Are the type of an object, which describes how the memory should be intepreted
+Type                                    Are the type of an object, which describes how the memory should be interpreted
 Type safety                             A Program is typesafe when objects only used according to the rules of their type.
 Value                                   Is a set of of bits in memory which interpreted according to a type.
-Abstraction
-begin()
-Computation
-Conditional statement
-Declaration
-Definition
-Divide and conquer
-else
-end()
-expression
-for-statement
-range-for-statement
-function
-if-statement
-Increment
-Input
-Iteration
-Loop
-lvalue
-member function
-output
-push_back()
-Repetition
-rvalue
-selection
-size()
-sort()
-statement
-switch-statement 
-vector
-while-statement
+Abstraction                             Hiding details we don't need to use facility (implementation details) behind a convenient and general interface.
+begin()                                 Returns an iterator pointing to the first element in the vector.
+Computation                             The act of producing a result (output) from arguments (input) using a function (computation).
+Conditional statement                   A Conditional statement is for example a if-statement where the program runs a set of particular statements depending if the condition is true.
+Divide and conquer                      We understand by Divide and conquer that we divide complex computations into smaller functions and call them one by one.
+else                                    If the "if" condition is not true than the statements inside the else will be computed.
+end()                                   The C++ function std::vector::end() returns an iterator which points to past-the-end element in the vector container.
+expression                              A expression computes a value from a number of operands. Simple expressions are literal values like 10 or "Norah". A variable represents a expression to like: int length = 20;
+for-statement                           A for-statement iterate n-times till the condition is not longer met. You should use for, when you know how many times you want to iterate
+range-for-statement                     Also called foreach iteration. This statement will run for all elements of an container.
+function                                A function is a named sequence of statements.
+if-statement                            A if-statement where the program runs a set of particular statements depending if the condition is true.
+Increment                               With using a increment we can add 1 to an variable. We know pre and post increments.
+Input                                   Also called an argument which is used for example in functions that is necessary for the computation.
+Iteration                               Also called Repetition and with an iteration we can execute the same statements multiple times.
+Loop                                    In computer programming, a loop is a sequence of instruction s that is continually repeated until a certain condition is reached.
+lvalue                                  An lvalue is for short a value that appears on the left side of an operand and mostly the one value that will be modified. 
+member function                         Also called methods are functions that are functions defined inside a class. A example is the begin() member function for the container vector.
+output                                  A output is the result of an computation which is provided after a program or functions runs. 
+push_back()                             The push_back() member-function puts an new value in the end of the vector.
+Repetition                              Identical to Iteration.
+rvalue                                  The complement to lvalue is rvalue, that is, an expression that identifies something that may not be modified or have its address taken, such as a value returned from a function (&f(x) is an error because f(x) is an rvalue).
+selection                               Under selection we understand the possibility to compute different statements regarding of an state. With selections we allow our program to have multiple paths.     
+size()                                  The size member function give the size of an container.
+sort()                                  Is defined inside the header algorithm and sorts a container in ascending order.               
+switch-statement                        A switch-statement is like an if-statement but is used if you have many possible selections.
+vector                                  A vector is a container that is defined in the STL. It can store elements and its half open. You can expand the vector at the end. The advantage of a vector is, that its know its size and does boundary checking when you try to access a variable.
+while-statement                         A while statement is a iteration which performs the same statements until a specified condition is not longer met.
 
