@@ -1,4 +1,4 @@
-// 11_Exercise.cpp : Modify the program described in the previous exercise to take an input value max and then find all prime numbers from 1 to max.
+// 12_Exercise.cpp : Modify the program described in the previous exercise to take an input value max and then find all prime numbers from 1 to max.
 
 
 #include <iostream>
