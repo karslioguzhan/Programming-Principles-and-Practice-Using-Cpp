@@ -1,0 +1,19 @@
+Our hexagon was regular with 2cm sides. Did we get that answer right? Just do the “back of the envelope” calculation. Take a piece a paper and scribble on it. Don’t feel that’s beneath you. Many famous scientists have been greatly admired for their ability to come up with an approximate answer using a pencil and the back of an envelope (or a napkin). This is an ability — a simple habit, really — that can save us a lot of time and confusion.
+
+Answer: We can divide the hexagon into 3 shapes:
+    Two triangles with 2 cm cathetus and unknown hypotenuse.
+    One big rectangle in the middle with unknown length, which is the hypotenuse of the triangles.
+    Calculation of triangles (Pythagorean theorem)
+        Hypotenuse:
+            c =  sqrt(a^2+b^2)
+            c = sqrt(2^2+2^2) = sqrt(8) ~ 2,83 cm
+        We can add the two triangles together and create an square with a side length of 2:
+            areaOfTriangles = 2^2 = 4 cm^2
+    Calculation of the middle rectangle:
+        Area = sideLength * c = 2 * 2,83 ~ 5,66 cm^2
+    Area = 2*areaOfTriangle + AreaOfRectangle = 4 + 5,66 = 9,66 cm^2 
+
+Comparison: In the book 10,39 cm^2 was calculated. With our estimation --> 9,66 cm^2 we are 8 % off. Which should be alright for 
+    a quick check if the calculation is legit.
+
+    
