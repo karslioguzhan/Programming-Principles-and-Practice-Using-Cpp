@@ -1,0 +1,21 @@
+Estimate those driving times. Also, estimate the corresponding flight times (using ordinary commercial air travel). Then, try to verify your estimates by using appropriate sources, such as maps and timetables. We’d use online sources.
+
+Answer:
+    Car:
+        New York --> Denver (Colorado)
+        Length ~ 1790 miles ~ 2880 km (Google Maps)
+        Maximum speed 70 mp/h in east side and 75 mp/h central USA --> estimate 72,5 mp/h ~ 115 km/h
+        Calculation:
+            v = s/t --> t = s/v
+            t = 2880 km / 115 (km/h) ~ 25 h
+    Flight
+        London --> Nice (France)
+        Length ~ 1000 km (linear distance)
+        Velocity ~ 1000 km/h (Google)
+        Calculation
+            t = 1 h
+
+Summary:
+    Without consideration of takeoff and landing time and speed in estimate the flight should be at least 1 hour. 
+    The driving from New York to Denver was estimated to only have motorway speed and nonstop. In reality 25 hours should be legal impossible. 
+
