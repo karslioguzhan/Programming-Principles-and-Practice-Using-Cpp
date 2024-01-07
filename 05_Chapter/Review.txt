@@ -1,0 +1,150 @@
+1. Name four major types of errors and briefly define each one.
+    - Compile-time errors
+        - Errors found from the compiler like syntax or type errors
+    - Link-time errors
+        - Errors found by the linker when it is trying to link the object files
+    - Run-time errors
+        - Errors found by checks in a running program. It can be detected from the computer, a library or by the user code.
+    - Logic errors
+        - Errors found by the programmer looking for the causes of erroneous results.
+
+2. What kinds of errors can we ignore in student programs?
+    - Errors like misbehaving hardware or from system software are not the scope of this book.
+
+3. What guarantees should every completed project offer?
+    - Should produce the desired results for all legal inputs.
+    - Should give reasonable error messages for all illegal inputs.
+    - Need not worry about misbehaving hardware.
+    - Need not worry about misbehaving system software.
+    - Is allowed to terminate after an error.
+
+4. List three approaches we can take to eliminate errors in programs and produce acceptable software.
+    - Organize software to minimize errors.
+    - Eliminate most of the errors we made through debugging and testing.
+    - Make sure the remaining errors are not serious.
+
+5. Why do we hate debugging?
+    - Because debugging i likely the most tedious and time-wasting aspects of programming.
+
+6. What is a syntax error? Give five examples.
+    - Is a compile time error and the compiler reject this statements because is not according to the C++ grammar.
+    - Examples
+        - Int test; --> it should be int
+        - int test  --> missing semicolon
+        - function("hallo) --> quote not terminated
+        - int test, --> Statement not terminated
+        - vector test; --> Vector not right defined
+
+7. What is a type error? Give five examples.
+    - Is a compile time error where the compiler reports that the types between for your variables, functions etc. mismatches.
+    - Examples
+        - function(int, int) -> function("hallo", 5); --> False input
+        - function(int, int) -> function(5); --> Missing input
+        - function(int, int) -> Function(5); --> Undeclared function
+        - function(int, int) -> function(5, 6, 6); --> too many arguments
+        - function(int, int) -> function(); --> Missing function arguments
+
+8. What is a linker error? Give three examples.
+    - A linker error is when the separate compiled parts (translation units) cannot be correctly linked from the linker.
+    - Examples
+        - Calling a function where the function prototype exists but not the definition.
+        - Calling a function with the same name but different types.
+        - Calling a function with same name but different number of arguments.
+
+9. What is a logic error? Give three examples.
+    - A logic errors can be found when all linker and compiler errors were fixed and the program runs.
+    - Typically the program generates not the desired output or returns a false output.
+    - Examples  
+        - For example when calculating an area and the input is negative --> negative length didn't exists
+        - A calculation return a value that is not physically correct --> faster than the speed of light
+        - When values gets calculated but the implicit conversion is false like if you want a double but inserted a integer division.
+
+10. List four potential sources of program errors discussed in the text.
+    - Compiler errors
+    - Linker errors
+    - Run time errors
+    - Logic errors
+
+11. How do you know if a result is plausible? What techniques do you have to answer such questions?
+    - For checking the plausibility of an result you need experience and system understanding. Some errors are easy to determine like negative areas and other are not trivial like is a hour from a city to a city legit?
+    - Techniques
+        - Estimations
+            - We can use easy calculations to check if the results are in the right range.
+            - We can use online resources for validating results
+
+12. Compare and contrast having the caller of a function handle a run-time error vs. the called function's handling the run-time error.
+    - Caller checks inputs
+        - When the caller checks for legal inputs the user/function that calls the function has to be check.
+        - This approach used if you cannot change or see the function which you try to call.
+        - The problem with that approach is, that every time you want to call the function you have to check it before the call
+    - Callee checks inputs 
+        - This approach tests the arguments if they are legit inside the function self.
+        - Beneficial of this approach is that we only include the test logic once in the function self
+
+13. Why is using exceptions a better idea than returning an "error value"?
+    - The use of exceptions is good because with that you have to catch the error. If the error can't be catched the program terminates unlike when you return a error value.
+
+14. How do you test if an input operation succeeded?
+    - You can check if an error is thrown. First you can check if the pre-conditions are met and after executing the body you can check the result with the post-conditions.
+
+15. Describe the process of how exceptions are thrown and caught.
+    - The basic idea is, that if a function finds an error it cannot handle it does not return normally. Instead it throws an exception. 
+
+16. Why, with a vector called v, is v[v.size()] a range error? What would be the result of calling this?
+    - Because the v.size() method return the number of elements but in c++ the addressing starts with 0 and this call will be outside the boundary.
+    - Depending on the compiler an error like this should appear: "terminate called after throwing an instance of 'std::out_of_range'"
+
+17. Define pre-condition and Post-condition; give an example (that is not the area() function from this chapter) , preferably a computation that requires a loop.
+    - For example we try to check if input is zero by a division and in the postcondition we check if we exceed the range of the vector
+    Example:
+    int main()
+    {
+        std::vector<int> test(5);
+        int input;
+        std::cin>> input;
+        // Precondition
+        try{
+            if(input==0)
+            {
+                throw std::logic_error("Cannot divide by zero!");
+            }
+        }
+        catch(...)
+        {
+            std::cerr << "Input was 0!\n";
+        }
+        for(int i=0; i<=test.size(); ++i)
+        {
+            try{
+                // Postcondition
+                std::cout << test.at(i)/input << "\n";
+            }
+            catch(...)
+            {
+                std::cerr << "Failed\n";
+            }
+        }
+        return 0;
+    }
+
+18. When would you not test a pre-condition?
+    - Nobody would give bad arguments
+    - It would slow down my code
+    - It's too complicated to check
+
+19. When would you not test a post-condition?
+    - Probably too complicated to check and performance issues
+
+20. What are the steps in debugging a program?
+    - Debugging can be split generally into three steps
+        - Get the program to compile
+        - Get the program to Link
+        - Get the program to do what it is supposed to do.
+
+21. Why does commenting help when debugging?
+    - Because when you are commenting good the user should know what the function/program should do, which arguments it should get and what the possible legit answer was.
+    - In addition to that, you can write what you want to achieve. It shouldn't be the code just in english vocabulary!
+
+22. How does testing differ from debugging?
+    - The testing is performed after you build your program with a set of selected inputs and their outputs.
+    - This so called testcases tests the program for legit responses.
