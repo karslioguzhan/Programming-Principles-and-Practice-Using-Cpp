@@ -68,4 +68,23 @@ sort()                                  Is defined inside the header algorithm a
 switch-statement                        A switch-statement is like an if-statement but is used if you have many possible selections.
 vector                                  A vector is a container that is defined in the STL. It can store elements and its half open. You can expand the vector at the end. The advantage of a vector is, that its know its size and does boundary checking when you try to access a variable.
 while-statement                         A while statement is a iteration which performs the same statements until a specified condition is not longer met.
-
+argument error                          Argument errors are when the arguments that are given to a function/program are false. This can lead to errors which the compiler can catch or worse logic errors which only can be tested.
+assertion                               A statement that states (asserts) an invariant is called an assertion.
+catch                                   The catch statement handle exceptions, like out_of_range etc.
+compile-time error                      Compile time errors occurs when the compiler gets errors like syntax or type errors. 
+container                               A Container is in the standard library a holder objects that stores a collection of other objects(elements).
+debugging                               Debugging is the art of finding and removing all kinds of errors.
+error                                   A error can be understand as an misbehave of your function/program. 
+exception                               Exceptions provide a way to react to exceptional circumstances (like runtime errors) in programs by transferring control to special functions called handlers.
+invariant                               In OOP, an invariant is a set of assertions that must always hold true during the life of an object for the program to be valid.
+link-time error                         Are errors that occurs when the linker tries to link the compiled files.
+logic error                             Are errors that leads to false results but the compiler and linker does not catch it.
+post-condition                          Post conditional checks are checks for testing if a result of an program/function is legit.
+pre-condition                           Pre conditional checks are checking if the arguments that are passed to the program/function are legit.
+range error                             A range errors occurs when you try to get or set to an element of an container which doesn't exist.
+requirement                             Requirements can be understand as the necessary things that should considered when writing a software. 
+run-time error                          Occurs when the program is correctly compiled and linked and the program returns error while running. Like for example you try to divide with zero. 
+syntax-error                            A Syntax error is a compile time error where the compiler checks if the syntax of c++ is respected. For example missing semicolon.
+testing                                 The testing is performed after you build your program with a set of selected inputs and their outputs.
+throw                                   Is an expression which signals an erroneous condition and executes an error handler.
+type error                              A Type error is a compile time error where the type mismatches. For example you try to insert a string to an function which requires an int.
