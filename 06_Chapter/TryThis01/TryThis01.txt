@@ -1,0 +1,20 @@
+TryThis01.txt: 
+On the other hand, why shouldn't we be able to find a simple solution to this problem? It doesn't seem to be all that difficult. If nothing else, trying would give us better appreciation of the problem and the eventual solution. Consider what you might do right away. For example, look at the input 12.5+2. We could tokenize that decide that the expression was simple, and compute the answer. That may be bit messy, but straightforward, so maybe we could proceed in this direction and find something that's good enough! Consider what to do if we found both a + and a * in the line 2+3*4. That too can be handled by "brute force". How would we deal with a complicated expression, such as 1+2*3/4%5+(6-7*(8))? And how would we deal with errors, such as 2+*3 and 2&3? Consider this for a while, maybe doodling a bit on a piece of paper trying to outline possible solutions and interesting or important input expression.
+
+Considerations:
+    - It a first glance the number of tokens must be a odd number
+    - We could check if every non numeric token have two numeric neighbors
+        - Except braces
+    - We handle first braces and the values inside
+        - If a single number in a brace this will be ignored
+    - For the modulo operator we check if we can cast both numeric values to integers without losses
+    - We must also consider what we do with floating point errors  (precision)
+
+Possible solutions
+    - Use the vector of Tokens
+    - Create a function that handle with braces.
+        - That function should return for each opened brace the right closing brace
+            - If not found a error must thrown
+    - Then create a function that searches for *,/,% and will compute them first
+    - At last the + and - should be calculated
+    - The result should the combination of partial results
