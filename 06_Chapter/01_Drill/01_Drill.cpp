@@ -100,7 +100,7 @@ Token Token_stream::get()
         return Token(ch);        // let each character represent itself
     case '.':
     case '0': case '1': case '2': case '3': case '4':
-    case '5': case '6': case '7': case '9':
+    case '5': case '6': case '7': case '8': case '9': // 3. logic error:  Missing 8 
     {
         cin.putback(ch);         // put digit back into the input stream
         double val;
@@ -158,6 +158,8 @@ double term()
         case '*':
             left *= primary();
             t = ts.get();
+            break;
+            // 3. Logic error: Missing break 
         case '/':
         {
             double d = primary();
@@ -204,16 +206,21 @@ double expression()
 int main()
 try
 {
+    // 5. Error missing assignment of val;
+    double val{};
     while (cin) {
         Token t = ts.get();
-        // 5. Error missing assignment of val;
-        double val = t.value;
         if (t.kind == 'q') break; // 'q' for quit
         if (t.kind == ';')        // ';' for "print now"
+        {
             cout << "=" << val << '\n';
+        }
         else
+        {
             ts.putback(t);
-        val = expression();
+            // 1. logic Error. Only do calculation if not ";" and "q"!
+            val = expression();
+        }
     }
     keep_window_open();
 }
