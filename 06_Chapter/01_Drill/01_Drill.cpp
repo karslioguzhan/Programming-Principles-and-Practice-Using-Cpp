@@ -206,6 +206,8 @@ double expression()
 int main()
 try
 {
+    // Greeting menu
+    cout << "Welcome to our simple calculator.\nPlease enter expressions using floating-point numbers.\n";
     // 5. Error missing assignment of val;
     double val{};
     while (cin) {
