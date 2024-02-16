@@ -30,9 +30,6 @@
     Happy hunting!
 
 */
-/*
-    Progress: Resolved all compiler errors. Next step are the logic errors.
-*/
 
 #include "std_lib_facilities.h"
 
