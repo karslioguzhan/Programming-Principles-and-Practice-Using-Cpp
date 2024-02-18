@@ -1,0 +1,130 @@
+1. What do we mean by "Programming is understanding"?
+    - The statement "Programming is understating" tells us, that solving a problem without understand it properly could lead to false results and not useful programs
+
+2. The chapter details the creation of a calculator program. Write a short analysis of the calculator should be able to do.
+    - The program should do basic arithmetic like addition, subtraction, multiplication and division. 
+    - It should respect braces and the rule which parts of an equation should be calculated first. etc. * over + 
+
+3. How do yoe break a problem up into smaller manageable parts?
+    - Look for tools and libraries that do specific task for your issue. It's not a good idea to reinvent a wheel for each program your write.
+    - Look for parts of solution that can be separately described. For example:
+        - User interaction
+        - Calculation
+        - Parsing
+
+4. Why is creating a small, limited version of a program a good idea?
+    - Creating a small prototype is useful because of:
+        - To make problems of our understating, tools and ideas visible
+        - To show definition lack in the problem description
+        - To test small parts before having to test everything at once with is dependencies
+
+5. Why is feature creep a bad idea?
+    - Because we should consider the following trade of
+        - Can we complete the project?
+        - Do we have all skills, time and skill for more advanced solutions?
+        - Should we consider problems we don't want to solve?
+
+6. What are the three main phases of software development?
+    - Analysis
+        - Understanding the problem and writing down a set of requirements
+    - Design
+        - Creating a overall structure of the program to show which parts does which job and their interactions
+    - Implementation
+        - Writing, debugging and testing the code
+
+7. What is a "use case"?
+    - How a system/program can be used to achieve a specific goal or task.
+
+8. What is the purpose of testing?
+    - The purpose of testing is to test if the program behave as we intended 
+    - Are the results as we expected
+    - Do we consider all or most common "wrong" inputs and interactions
+    - Is the program fast enough for its purpose
+
+9. According to the outline in the chapter, describe the difference between a Term, an Expression, a Number and Primary.
+    - Expression
+        - Combination of operators, names and values
+        - Is the "top rule" and must be Term
+    - Term
+        - A Term must be Primary or a term
+        - It decides which action should be performed or is the value of the action
+    - Primary
+        - A primary is a number or an expression and will be used for the calculation
+    - Number
+        - Is the representing of the data 
+
+10. In the chapter, an input was broken down into its component, Terms, Expressions, Primarys, and Numbers. Do this for (17+4)/(5-1).
+    - ("(") = "(" Expression --> Primary --> Term --> Expression
+        - (17) = Number --> Primary --> Term --> Expression
+            - (+) = Expression
+        - (4) = Number --> Primary --> Term --> Expression
+    - (")") = ")" Expression --> Primary --> Term --> Expression
+    - (/)
+    - ("(") = "(" Expression --> Primary --> Term --> Expression
+        - (5) = Number --> Primary --> Term --> Expression
+            - (-) = Expression
+        - (1) = Number --> Primary --> Term --> Expression
+    - (")")  = ")" Expression --> Primary --> Term --> Expression
+
+11. Why does the program not have a function called number()?
+    - Because depending on the "input" an expression can be number and with this attempt it is easier to use grammar rules.
+
+12. What is a token?
+    - A token is a sequence of characters that represents something we consider a unit such as a number or operators
+
+13. What is a grammar? A grammar rule?
+    - A grammar defines the syntax of our input.
+    - A grammar rules defines how our program interpret this syntax
+
+14. What is a class? What do we use classes for?
+    - A class can be considered like an user defined type
+    - A class have members which representing values and methods which perform actions 
+    - We use classes for splitting our problems into smaller parts and every "class" deals with its specials responsibility
+
+15. How can we provide a default value for a member of a class?
+    - We can initialize in the member field. 
+    - For example int memberA{1};
+
+16. In the expression function, why is the default for the switch-statement to "put back" the token?
+    - Because if don't putback the token we "eat" values and this can lead to false results
+
+17. What is "look-ahead"?
+    - With look ahead we mean that a rule which is superior should be considered first.
+    - For example 2+1*3 
+        - 1*3 should be calculated first but the computer reads from left to right
+        - Because of that should look ahead if a superior rule is available before performing 2+1
+
+18. What does putback() do and why is it useful?
+    - It copies the token and sets the buffer boolean to true.
+    - It is useful because we know that we have to consider following terms
+
+19. Why the remainder (modulus) operation, %, difficult to implement in the term()?
+    - The remainder operation is difficult because its only suits to integers and we deal with floating point numbers.
+
+20. What do we use the two data members of the Token class for?
+    - With the full and buffer we can show if a token is in the buffer and which value it have
+
+21. Why do we (sometimes) split a class's members into private and public members.
+    - Because of we want to encapsulate information for the caller of the method that should not be modified
+    - public members are meant to be accessed and private are for the class to function properly
+
+22. What happens in the Token_stream class when there is a token in buffer and the get() function is called?
+    - Firstly it check if there is a token inside the buffer. If its true than the the token will be removed from the buffer and the indicator (full) will be set to false.
+
+23. Why were the ';' and 'q' characters added to the switch-statement in the get() function of the Token_stream class?
+    - The semicolon triggers the printing of the result and shows the program that the user finished its command
+    - The character q shows the program that the user wants to terminate this session
+
+24. When should we start testing our program?
+    - The earlier you test you should prevent big issues. So after a small prototype testing should be reasonable.
+
+25. What is a "user-defined type"? Why would we want one?
+    - A user defined type can be class or a struct that representing a type specially designed for our problem.
+    - Using a user defined type is useful because we can provide others and us a valid type
+
+26. What is the interface to a C++ "user-defined type"?
+    - The interface are members or functions (methods) which can be accessed from outside of an user-defined type
+
+27. Why do we want to rely on libraries of code?
+    - Because it is a good idea to use tested, optimized code that are in libraries
+    - We benefit from preventing reinventing frequently performed actions and our codebase will be smaller and easier to grasp
