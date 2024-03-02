@@ -87,6 +87,9 @@ Token Token_stream::get()
 	}
 }
 
+
+
+
 //------------------------------------------------------------------------------
 
 Token_stream ts;        // provides get() and putback() 
@@ -115,10 +118,41 @@ double primary()
 		return d;
 	}
 	case '8':            // we use '8' to represent a number
-		//t = ts.get();
 		return t.value;  // return the number's value
 	default:
 		error("primary expected");
+	}
+}
+
+double factorial()
+{
+	double left = primary();
+	Token t = ts.get();
+	while (true)
+	{
+		switch (t.kind)
+		{
+		case '!':
+		{
+			int x = left;
+			if (x == 0) { x = 1; }
+			else if (x < 0)
+			{
+				error("Factorial must be a positive integer"); keep_window_open();
+			}
+			else for (int y = x - 1; y > 0; --y)  // So this is where the error was
+			{
+				x = x * y;
+			}
+			t = ts.get();
+			double left = x;
+			ts.putback(t);
+			return left;
+		}
+		default:
+			ts.putback(t);
+			return left;
+		}
 	}
 }
 
@@ -127,28 +161,19 @@ double primary()
 // deal with *, /, and %
 double term()
 {
-	double left = primary();
+	double left = factorial();
 	Token t = ts.get();        // get the next token from token stream
-	int facValue{ 1 };
 
 	while (true) {
 		switch (t.kind) {
-		//case '!':
-		//	for (int numInt{ 1 }; numInt <= static_cast<int>(left); ++numInt)
-		//	{
-		//		facValue *= numInt;
-		//	}
-		//	left = facValue;
-		//	t = ts.get();
-		//	break;
 		case '*':
-			left *= primary();
+			left *= factorial();
 			t = ts.get();
 			break;
 			// 3. Logic error: Missing break 
 		case '/':
 		{
-			double d = primary();
+			double d = factorial();
 			if (d == 0) error("divide by zero");
 			left /= d;
 			t = ts.get();
@@ -223,6 +248,7 @@ catch (...) {
 	keep_window_open();
 	return 2;
 }
+
 
 //------------------------------------------------------------------------------
 
