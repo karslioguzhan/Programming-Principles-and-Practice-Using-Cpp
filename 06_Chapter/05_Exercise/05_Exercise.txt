@@ -1,0 +1,24 @@
+5: Add the article "the" to the "English" grammar in §6.4.1, so that it can describe sentences such as "The birds fly but the fish swims".
+
+Sentence:
+    Noun Verb
+    Article Noun Verb
+    Sentence Conjunction Sentence
+
+Conjunction:
+    "and"
+    "or"
+    "but"
+
+Noun:
+    "birds"
+    "fish"
+    "C++"
+
+Article:
+    "the"
+
+Verb:
+    "rules"
+    "fly"
+    "swim"
