@@ -27,11 +27,14 @@
 #include <string>
 #include <cctype>
 #include <vector>
+#include <boost/math/special_functions/factorials.hpp>
 
 // Function prototypes
 std::stringstream printMenu();
 bool selectCalculation(char& userSelection);
 bool getParameters(int& A, int& B);
+uint64_t calculatePermutation(const int A, const int B);
+uint64_t calculateCombination(const uint64_t permutationValue, const int B);
 
 int main()
 {
@@ -53,6 +56,18 @@ int main()
 		std::cout << "Please enter: ";
 		validInput = getParameters(A, B);
 	} while (!validInput);
+
+	uint64_t permutationValue{ calculatePermutation(A, B) };
+	switch (selection)
+	{
+	case 'P':
+		std::cout << "P(" << A << ", " << B << ") = " << permutationValue << "\n";
+		break;
+	case 'C':
+		std::cout << "C(" << A << ", " << B << ") = " << calculateCombination(permutationValue, B) << "\n";
+		break;
+	}
+
 
 	return 0;
 }
@@ -105,7 +120,41 @@ bool getParameters(int& A, int& B)
 		std::cout << "ERROR: Not inserted only two arguments!\n";
 		return false;
 	}
-	// TODO Next step is to check if both parts of the vector can be converted to integers!
+	// Check if input are integers
+	try
+	{
+		int tempA{ std::stoi(inputs.at(0)) };
+		int tempB{ std::stoi(inputs.at(1)) };
+		if (tempA != std::stod(inputs.at(0)) || tempB != std::stod(inputs.at(1)))
+		{
+			throw std::invalid_argument("Input is not an integer!\n");
+		}
+		// Assign if valid values
+		A = tempA;
+		B = tempB;
+	}
+	catch (...)
+	{
+		std::cout << "ERROR: One of the values is not an int!\n";
+		return false;
+	}
+	// Check if A is greater if B
+	if (A < B || A < 0 || B < 0)
+	{
+		std::cout << "ERROR: Complex calculation is not supported. A must be greater than B\n";
+		return false;
+	}
 
 	return true;
 }
+
+uint64_t calculatePermutation(const int A, const int B)
+{
+	return static_cast<uint64_t>(boost::math::factorial<double>(A)/ boost::math::factorial<double>(A-B));
+}
+
+uint64_t calculateCombination(const uint64_t permutationValue, const int B)
+{
+	return static_cast<uint64_t>(permutationValue / boost::math::factorial<double>(B));
+}
+
