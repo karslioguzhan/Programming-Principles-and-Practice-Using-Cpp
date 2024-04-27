@@ -1,41 +1,54 @@
 // 01_Drill.cpp : This drill divided into subtask
 /*
 	1. Starting from the file calculator08buggy.cpp get the calculator to compile.
+	2. Go through the entire program and add appropriate comments.
 */
 
 #include "std_lib_facilities.h"
 
+// Token as struct
 struct Token {
+	// Member variables of Struct
 	char kind;
 	double value;
 	string name;
+	// All Token constructors with initializer list
 	Token(char ch) :kind(ch), value(0) { }
 	Token(char ch, double val) :kind(ch), value(val) { }
-	Token(char ch, string name) :kind(ch), name(name) { } // 1. Error: Missing constructor
+	Token(char ch, string name) :kind(ch), name(name), value(0) { } // 1. Error: Missing constructor
 };
 
+// Token_stream class
 class Token_stream {
+	// Member variables
 	bool full;
 	Token buffer;
 public:
-	Token_stream() :full(0), buffer(0) { }
+	// Default Constructor (Not sure if 0 is legit
+	Token_stream() :full(false), buffer(0) { }
 
+	// Method prototype for getting Tokens
 	Token get();
+	// Method for assigning tokens to buffer
 	void unget(Token t) { buffer = t; full = true; }
-
+	// Method prototype for ignoring inputs
 	void ignore(char);
 };
 
+// Global variables with arbitrary values
 const char let = 'L';
 const char quit = 'Q';
 const char print = ';';
 const char number = '8';
 const char name = 'a';
 
+// Getter-Method for Tokens
 Token Token_stream::get()
 {
+	// Returning actual Token if buffer is full
 	if (full) { full = false; return buffer; }
-	char ch;
+	// Read input as character
+	char ch{};
 	cin >> ch;
 	switch (ch) {
 	case '(':
@@ -69,7 +82,7 @@ Token Token_stream::get()
 		if (isalpha(ch)) {
 			string s;
 			s += ch;
-			while (cin.get(ch) && (isalpha(ch) || isdigit(ch))) s = ch;
+			while (cin.get(ch) && (isalpha(ch) || isdigit(ch))) s += ch; // Logical error -> String was not concatenated right
 			cin.unget();
 			if (s == "let") return Token(let);
 			if (s == "quit") return Token(name);
@@ -124,6 +137,7 @@ bool is_declared(string s)
 	return false;
 }
 
+// Token stream as global variable (not best practice)
 Token_stream ts;
 
 double expression();
