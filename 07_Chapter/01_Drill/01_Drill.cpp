@@ -2,6 +2,7 @@
 /*
 	1. Starting from the file calculator08buggy.cpp get the calculator to compile.
 	2. Go through the entire program and add appropriate comments.
+	3. As you commented, you found errors (deviously inserted especially for you to find). Fix them; they are not in the text of the book.
 */
 
 #include "std_lib_facilities.h"
@@ -52,35 +53,35 @@ Token Token_stream::get()
 	cin >> ch;
 	// Switch for determining token type
 	switch (ch) {
-	case '(':
-	case ')':
-	case '+':
-	case '-':
-	case '*':
-	case '/':
-	case '%':
-	case ';':
-	case '=':
-		// non numeric characters
-		return Token(ch);
-	case '.':
-	case '0':
-	case '1':
-	case '2':
-	case '3':
-	case '4':
-	case '5':
-	case '6':
-	case '7':
-	case '8':
-	case '9':
-	{
-		// Return numeric values
-		cin.unget();
-		double val;
-		cin >> val;
-		return Token(number, val);
-	}
+		case '(':
+		case ')':
+		case '+':
+		case '-':
+		case '*':
+		case '/':
+		case '%':
+		case ';':
+		case '=':
+			// non numeric characters
+			return Token(ch);
+		case '.':
+		case '0':
+		case '1':
+		case '2':
+		case '3':
+		case '4':
+		case '5':
+		case '6':
+		case '7':
+		case '8':
+		case '9':
+		{
+			// Return numeric values
+			cin.unget();
+			double val;
+			cin >> val;
+			return Token(number, val);
+		}
 	default:
 		// Getting strings from input
 		if (isalpha(ch)) {
@@ -168,7 +169,8 @@ double primary()
 	{
 		double d = expression();
 		t = ts.get();
-		if (t.kind != ')') error("'(' expected");
+		if (t.kind != ')') error("')' expected");
+		return d; // Missing return
 	}
 	case '-':
 		return -primary();
