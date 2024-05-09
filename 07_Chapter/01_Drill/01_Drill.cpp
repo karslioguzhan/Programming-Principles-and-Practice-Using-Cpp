@@ -8,6 +8,7 @@
 	6. Add a predefined name k meaning 1000
 	7. Give the user a square root function sqrt(), for example, sqrt(2+6.7). Naturally, the value of sqrt(x) is the square root of x; for example, sqrt(9) is 3. Use the standard library sqrt() function that is available through the header std_lib_facilities.h. Remember to update the comments, including the grammar.
 	8.Catch attempts to take the square root of a negative number and print an appropriate error message.
+	9. Allow the user to use pow(x,i) to mean "Multiply x with itself i times"; for example, pow(2.5,3) is 2.5*2.5*2.5. Require i to be an integer using the technique we used for %.
 */
 
 /*
@@ -25,6 +26,9 @@
 
 // SquareRoot function prototype
 double squareRootFunction();
+
+// Pow function prototype
+double powFunction();
 
 // Token as struct
 struct Token {
@@ -62,10 +66,13 @@ const char print = ';';
 const char number = '8';
 const char name = 'a';
 const char k = 'k';
-const char squreRootVal{ 's' };
+const char squareRootVal{ 's' };
+const char powVal{ 'p' };
 
-// Constans
-const string squreRoot{ "sqrt" };
+// Constants
+const string squareRoot{ "sqrt" };
+const string powName{ "pow" };
+
 
 // Getter-Method for Tokens
 Token Token_stream::get()
@@ -86,6 +93,7 @@ Token Token_stream::get()
 	case '%':
 	case ';':
 	case '=':
+	case ',':
 		// non numeric characters
 		return Token(ch);
 	case '.':
@@ -116,7 +124,8 @@ Token Token_stream::get()
 			if (s == "let") return Token(let);
 			if (s == "Q") return Token(quit);
 			if (s.size() == 1 && s[0] == k) return Token(number, 1000);
-			if (s == squreRoot) return Token(squreRootVal);
+			if (s == squareRoot) return Token(squareRootVal);
+			if (s == powName) return Token(powVal);
 			return Token(name, s);
 		}
 		// Error message if nothing valid is inserted
@@ -204,8 +213,10 @@ double primary()
 		return t.value;
 	case name:
 		return get_value(t.name);
-	case squreRootVal:
+	case squareRootVal:
 		return squareRootFunction();
+	case powVal:
+		return powFunction();
 	default:
 		error("primary expected");
 	}
@@ -321,6 +332,7 @@ double squareRootFunction()
 	{
 	case '(':
 	{
+		// getting first expression
 		double d = expression();
 
 		t = ts.get();
@@ -328,6 +340,36 @@ double squareRootFunction()
 			error(" Missing ')'!");
 		if (d < 0) error(" Dont support negative square roots!");
 		return sqrt(d);
+	}
+	default:
+		error(" 'Missing ')'!");
+	}
+}
+
+double powFunction()
+{
+	Token t = ts.get();
+	switch (t.kind)
+	{
+	case '(':
+	{
+		// Get first expression
+		double d = expression();
+
+		// Check if ',' as parameter delimiter is inserted
+		t = ts.get();
+		if (t.kind != ',') error(" Missing ','!");
+
+		// get second double
+		double d2{ expression() };
+		if (fmod(d2, 1) != 0) error(" Doesn't support floating point number for pow!");
+		
+		// Get closing bracket
+		t = ts.get();
+		if (t.kind != ')') error(" Missing ')'!");
+		
+		// Return result
+		return pow(d, d2);
 	}
 	default:
 		error(" 'Missing ')'!");
