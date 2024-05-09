@@ -9,6 +9,7 @@
 	7. Give the user a square root function sqrt(), for example, sqrt(2+6.7). Naturally, the value of sqrt(x) is the square root of x; for example, sqrt(9) is 3. Use the standard library sqrt() function that is available through the header std_lib_facilities.h. Remember to update the comments, including the grammar.
 	8.Catch attempts to take the square root of a negative number and print an appropriate error message.
 	9. Allow the user to use pow(x,i) to mean "Multiply x with itself i times"; for example, pow(2.5,3) is 2.5*2.5*2.5. Require i to be an integer using the technique we used for %.
+	10. Change the "declaration keyword" from let to #
 */
 
 /*
@@ -60,7 +61,7 @@ public:
 };
 
 // Global variables with arbitrary values
-const char let = 'L';
+const char let = '#';
 const char quit = 'Q';
 const char print = ';';
 const char number = '8';
@@ -94,6 +95,7 @@ Token Token_stream::get()
 	case ';':
 	case '=':
 	case ',':
+	case let:
 		// non numeric characters
 		return Token(ch);
 	case '.':
@@ -121,7 +123,7 @@ Token Token_stream::get()
 			s += ch;
 			while (cin.get(ch) && (isalpha(ch) || isdigit(ch))) s += ch; // Logical error -> String was not concatenated right
 			cin.unget();
-			if (s == "let") return Token(let);
+			if (s == "#") return Token(let);
 			if (s == "Q") return Token(quit);
 			if (s.size() == 1 && s[0] == k) return Token(number, 1000);
 			if (s == squareRoot) return Token(squareRootVal);
