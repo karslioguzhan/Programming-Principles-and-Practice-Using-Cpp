@@ -7,6 +7,7 @@
 	5. Do the testing and fix any bugs that you missed when you commented.
 	6. Add a predefined name k meaning 1000
 	7. Give the user a square root function sqrt(), for example, sqrt(2+6.7). Naturally, the value of sqrt(x) is the square root of x; for example, sqrt(9) is 3. Use the standard library sqrt() function that is available through the header std_lib_facilities.h. Remember to update the comments, including the grammar.
+	8.Catch attempts to take the square root of a negative number and print an appropriate error message.
 */
 
 /*
@@ -322,13 +323,10 @@ double squareRootFunction()
 	{
 		double d = expression();
 
-		//handle if d is 0 or negative
-		if (d <= 0)
-			error(to_string(d), " cannot be square routed. Enter ';' to continue");
-
 		t = ts.get();
 		if (t.kind != ')')
 			error(" Missing ')'!");
+		if (d < 0) error(" Dont support negative square roots!");
 		return sqrt(d);
 	}
 	default:
