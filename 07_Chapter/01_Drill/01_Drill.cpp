@@ -4,10 +4,12 @@
 	2. Go through the entire program and add appropriate comments.
 	3. As you commented, you found errors (deviously inserted especially for you to find). Fix them; they are not in the text of the book.
 	4. Testing: prepare a set of inputs and use them to test the calculator. Is your list pretty complete? What should you look for? Include negative values, 0, very small, very large, and "silly" inputs.
+	5. Do the testing and fix any bugs that you missed when you commented.
+	6. Add a predefined name k meaning 1000
 */
 
 /*
-	4. Exercise Testset
+	4. Exercise test-set
 		-4*3; --> Negative number
 		0+1; --> Zeros
 		10/0 --> Dividing with zero
@@ -54,6 +56,7 @@ const char quit = 'Q';
 const char print = ';';
 const char number = '8';
 const char name = 'a';
+const char k = 'k';
 
 // Getter-Method for Tokens
 Token Token_stream::get()
@@ -102,7 +105,8 @@ Token Token_stream::get()
 			while (cin.get(ch) && (isalpha(ch) || isdigit(ch))) s += ch; // Logical error -> String was not concatenated right
 			cin.unget();
 			if (s == "let") return Token(let);
-			if (s == "quit") return Token(name);
+			if (s == "Q") return Token(quit);
+			if (s.size() == 1 && s[0] == k) return Token(number, 1000);
 			return Token(name, s);
 		}
 		// Error message if nothing valid is inserted
