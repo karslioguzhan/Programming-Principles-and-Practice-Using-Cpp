@@ -6,6 +6,7 @@
 	4. Testing: prepare a set of inputs and use them to test the calculator. Is your list pretty complete? What should you look for? Include negative values, 0, very small, very large, and "silly" inputs.
 	5. Do the testing and fix any bugs that you missed when you commented.
 	6. Add a predefined name k meaning 1000
+	7. Give the user a square root function sqrt(), for example, sqrt(2+6.7). Naturally, the value of sqrt(x) is the square root of x; for example, sqrt(9) is 3. Use the standard library sqrt() function that is available through the header std_lib_facilities.h. Remember to update the comments, including the grammar.
 */
 
 /*
@@ -20,6 +21,9 @@
 */
 
 #include "std_lib_facilities.h"
+
+// SquareRoot function prototype
+double squareRootFunction();
 
 // Token as struct
 struct Token {
@@ -57,6 +61,10 @@ const char print = ';';
 const char number = '8';
 const char name = 'a';
 const char k = 'k';
+const char squreRootVal{ 's' };
+
+// Constans
+const string squreRoot{ "sqrt" };
 
 // Getter-Method for Tokens
 Token Token_stream::get()
@@ -68,35 +76,35 @@ Token Token_stream::get()
 	cin >> ch;
 	// Switch for determining token type
 	switch (ch) {
-		case '(':
-		case ')':
-		case '+':
-		case '-':
-		case '*':
-		case '/':
-		case '%':
-		case ';':
-		case '=':
-			// non numeric characters
-			return Token(ch);
-		case '.':
-		case '0':
-		case '1':
-		case '2':
-		case '3':
-		case '4':
-		case '5':
-		case '6':
-		case '7':
-		case '8':
-		case '9':
-		{
-			// Return numeric values
-			cin.unget();
-			double val;
-			cin >> val;
-			return Token(number, val);
-		}
+	case '(':
+	case ')':
+	case '+':
+	case '-':
+	case '*':
+	case '/':
+	case '%':
+	case ';':
+	case '=':
+		// non numeric characters
+		return Token(ch);
+	case '.':
+	case '0':
+	case '1':
+	case '2':
+	case '3':
+	case '4':
+	case '5':
+	case '6':
+	case '7':
+	case '8':
+	case '9':
+	{
+		// Return numeric values
+		cin.unget();
+		double val;
+		cin >> val;
+		return Token(number, val);
+	}
 	default:
 		// Getting strings from input
 		if (isalpha(ch)) {
@@ -107,6 +115,7 @@ Token Token_stream::get()
 			if (s == "let") return Token(let);
 			if (s == "Q") return Token(quit);
 			if (s.size() == 1 && s[0] == k) return Token(number, 1000);
+			if (s == squreRoot) return Token(squreRootVal);
 			return Token(name, s);
 		}
 		// Error message if nothing valid is inserted
@@ -194,6 +203,8 @@ double primary()
 		return t.value;
 	case name:
 		return get_value(t.name);
+	case squreRootVal:
+		return squareRootFunction();
 	default:
 		error("primary expected");
 	}
@@ -299,6 +310,29 @@ void calculate()
 	catch (runtime_error& e) {
 		cerr << e.what() << endl;
 		clean_up_mess();
+	}
+}
+
+double squareRootFunction()
+{
+	Token t = ts.get();
+	switch (t.kind)
+	{
+	case '(':
+	{
+		double d = expression();
+
+		//handle if d is 0 or negative
+		if (d <= 0)
+			error(to_string(d), " cannot be square routed. Enter ';' to continue");
+
+		t = ts.get();
+		if (t.kind != ')')
+			error(" Missing ')'!");
+		return sqrt(d);
+	}
+	default:
+		error(" 'Missing ')'!");
 	}
 }
 
