@@ -88,3 +88,13 @@ syntax-error                            A Syntax error is a compile time error w
 testing                                 The testing is performed after you build your program with a set of selected inputs and their outputs.
 throw                                   Is an expression which signals an erroneous condition and executes an error handler.
 type error                              A Type error is a compile time error where the type mismatches. For example you try to insert a string to an function which requires an int.
+code layout                             Defines how the source code is designed and is split into logical units
+error handling                          Defines how errors get caught and what to do after a error occurs. Likewise a char is inserted instead of required integer  
+feature creep                           Defines the activity to add more and more features into a project that can be dangerous for finishing the project with the resources that are available
+maintenance                             Is the modification of code after finishing the project. For example this can be necessary if a security leak is found or changes in the compiler version.
+recovery                                Allows to retain code if incorrectly changes occurs
+revision history                        Show the changes that ware committed (usage of a source control management software like git is recommended)
+scaffolding                             Is how the project is designed, but it can mean the techniques like code generation and project generation too.
+symbolic constant                       Symbolic constants are nothing more than a label or name that is used to represent some fixed value that never changes throughout the course of a program. 
+
+
