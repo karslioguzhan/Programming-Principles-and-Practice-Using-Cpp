@@ -3,6 +3,18 @@
 	1. Starting from the file calculator08buggy.cpp get the calculator to compile.
 	2. Go through the entire program and add appropriate comments.
 	3. As you commented, you found errors (deviously inserted especially for you to find). Fix them; they are not in the text of the book.
+	4. Testing: prepare a set of inputs and use them to test the calculator. Is your list pretty complete? What should you look for? Include negative values, 0, very small, very large, and "silly" inputs.
+*/
+
+/*
+	4. Exercise Testset
+		-4*3; --> Negative number
+		0+1; --> Zeros
+		10/0 --> Dividing with zero
+		9999999999999999999*9999999999999999999; --> Very large number
+		1/9999999999999999999 --> Very small number
+		a+1; --> "silly" inputs
+		((5+5) --> Missing brackets
 */
 
 #include "std_lib_facilities.h"
