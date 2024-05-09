@@ -50,6 +50,7 @@ Token Token_stream::get()
 	// Read input as character
 	char ch{};
 	cin >> ch;
+	// Switch for determining token type
 	switch (ch) {
 	case '(':
 	case ')':
@@ -60,6 +61,7 @@ Token Token_stream::get()
 	case '%':
 	case ';':
 	case '=':
+		// non numeric characters
 		return Token(ch);
 	case '.':
 	case '0':
@@ -73,12 +75,14 @@ Token Token_stream::get()
 	case '8':
 	case '9':
 	{
+		// Return numeric values
 		cin.unget();
 		double val;
 		cin >> val;
 		return Token(number, val);
 	}
 	default:
+		// Getting strings from input
 		if (isalpha(ch)) {
 			string s;
 			s += ch;
@@ -88,38 +92,47 @@ Token Token_stream::get()
 			if (s == "quit") return Token(name);
 			return Token(name, s);
 		}
+		// Error message if nothing valid is inserted
 		error("Bad token");
 	}
 }
 
+// Method for ignoring input chars
 void Token_stream::ignore(char c)
 {
+	// Check if buffer is full and kind of buffer
 	if (full && c == buffer.kind) {
+		// Set full to false
 		full = false;
 		return;
 	}
-	full = false;
 
+	full = false;
 	char ch;
 	while (cin >> ch)
 		if (ch == c) return;
 }
 
+// Create Variable struct
 struct Variable {
 	string name;
 	double value;
 	Variable(string n, double v) :name(n), value(v) { }
 };
 
+// Initialize empty global vector
 vector<Variable> names;
 
+// Get string values
 double get_value(string s)
 {
+	// Iterate through vector and check if input string is in names
 	for (int i = 0; i < names.size(); ++i)
 		if (names[i].name == s) return names[i].value;
 	error("get: undefined name ", s);
 }
 
+// Setter for names with string and value
 void set_value(string s, double d)
 {
 	for (int i = 0; i <= names.size(); ++i)
@@ -130,6 +143,7 @@ void set_value(string s, double d)
 	error("set: undefined name ", s);
 }
 
+// Check if string is declared
 bool is_declared(string s)
 {
 	for (int i = 0; i < names.size(); ++i)
@@ -140,11 +154,15 @@ bool is_declared(string s)
 // Token stream as global variable (not best practice)
 Token_stream ts;
 
+// Function prototype for expressions
 double expression();
 
+// get primaries
 double primary()
 {
+	// Get token from token-stream
 	Token t = ts.get();
+	// Switch regarding of token kind
 	switch (t.kind) {
 	case '(':
 	{
@@ -163,22 +181,28 @@ double primary()
 	}
 }
 
+// Handler for terms
 double term()
 {
+	// Get left primary
 	double left = primary();
 	while (true) {
+		// Get token and check if multiplication or division
 		Token t = ts.get();
 		switch (t.kind) {
 		case '*':
+			// Multiply with primary
 			left *= primary();
 			break;
 		case '/':
 		{
+			// Division with check if dividing with zero
 			double d = primary();
 			if (d == 0) error("divide by zero");
 			left /= d;
 			break;
 		}
+		// Default just return the value
 		default:
 			ts.unget(t);
 			return left;
@@ -186,6 +210,7 @@ double term()
 	}
 }
 
+// Handle expressions
 double expression()
 {
 	double left = term();
@@ -205,9 +230,11 @@ double expression()
 	}
 }
 
+// Handle declarations
 double declaration()
 {
 	Token t = ts.get();
+	// kind name
 	if (t.kind != 'a') error("name expected in declaration");
 	string name = t.name;
 	if (is_declared(name)) error(name, " declared twice");
@@ -218,10 +245,12 @@ double declaration()
 	return d;
 }
 
+// Handle statements
 double statement()
 {
 	Token t = ts.get();
 	switch (t.kind) {
+		// distincition between declaration and expression
 	case let:
 		return declaration();
 	default:
@@ -235,6 +264,7 @@ void clean_up_mess()
 	ts.ignore(print);
 }
 
+// Setting outputs for prompt and result printing
 const string prompt = "> ";
 const string result = "= ";
 
@@ -254,21 +284,24 @@ void calculate()
 	}
 }
 
+// Main function
 int main()
+{
+	try {
+		calculate();
+		return 0;
+	}
+	catch (exception& e) {
+		cerr << "exception: " << e.what() << endl;
+		char c;
+		while (cin >> c && c != ';');
+		return 1;
+	}
+	catch (...) {
+		cerr << "exception\n";
+		char c;
+		while (cin >> c && c != ';');
+		return 2;
+	}
 
-try {
-	calculate();
-	return 0;
-}
-catch (exception& e) {
-	cerr << "exception: " << e.what() << endl;
-	char c;
-	while (cin >> c && c != ';');
-	return 1;
-}
-catch (...) {
-	cerr << "exception\n";
-	char c;
-	while (cin >> c && c != ';');
-	return 2;
 }
