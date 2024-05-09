@@ -10,6 +10,7 @@
 	8.Catch attempts to take the square root of a negative number and print an appropriate error message.
 	9. Allow the user to use pow(x,i) to mean "Multiply x with itself i times"; for example, pow(2.5,3) is 2.5*2.5*2.5. Require i to be an integer using the technique we used for %.
 	10. Change the "declaration keyword" from let to #
+	11. Change the "quit keyword" from quit to exit. That will involve defining a string for quit just as we did for let in §7.8.2.
 */
 
 /*
@@ -124,7 +125,7 @@ Token Token_stream::get()
 			while (cin.get(ch) && (isalpha(ch) || isdigit(ch))) s += ch; // Logical error -> String was not concatenated right
 			cin.unget();
 			if (s == "#") return Token(let);
-			if (s == "Q") return Token(quit);
+			if (s == "exit") return Token(quit);
 			if (s.size() == 1 && s[0] == k) return Token(number, 1000);
 			if (s == squareRoot) return Token(squareRootVal);
 			if (s == powName) return Token(powVal);
