@@ -1,10 +1,17 @@
 ﻿// 01_Exercise.cpp : This exercuse divided into subtask
 /*
 	1. Allow underscores in the calculator's variable names.
+	2. Provide an assignment operator, =, so that you can change the value of a variable after you introduce it using let. Discuss why that can be useful and how it can be a source of problems.
+*/
+
+/*
+	Solution
+	2. With the possibility to change values after they are declared earlier calculation can be misinterpreted. But the advantange is to change values if they are false or needed to update. For example are exchange rates that changes reguarly.
 
 */
 
 #include "std_lib_facilities.h"
+#include <algorithm>
 
 // SquareRoot function prototype
 double squareRootFunction();
@@ -140,7 +147,7 @@ struct Variable {
 };
 
 // Initialize empty global vector
-vector<Variable> names;
+vector<Variable> names{};
 
 // Get string values
 double get_value(string s)
@@ -163,11 +170,11 @@ void set_value(string s, double d)
 }
 
 // Check if string is declared
-bool is_declared(string s)
+int is_declared(string s)
 {
 	for (int i = 0; i < names.size(); ++i)
-		if (names[i].name == s) return true;
-	return false;
+		if (names[i].name == s) return i;
+	return -1;
 }
 
 // Token stream as global variable (not best practice)
@@ -261,10 +268,15 @@ double declaration()
 	// kind name
 	if (t.kind != 'a') error("name expected in declaration");
 	string name = t.name;
-	if (is_declared(name)) error(name, " declared twice");
 	Token t2 = ts.get();
 	if (t2.kind != '=') error("= missing in declaration of ", name);
 	double d = expression();
+	int searchResult{ is_declared(name) };
+	if (searchResult >= 0)
+	{
+		names.at(searchResult).value = d;
+		return d;
+	}
 	names.push_back(Variable(name, d));
 	return d;
 }
