@@ -2,11 +2,13 @@
 /*
 	1. Allow underscores in the calculator's variable names.
 	2. Provide an assignment operator, =, so that you can change the value of a variable after you introduce it using let. Discuss why that can be useful and how it can be a source of problems.
+	3. Provide named constants that you really can't change the value of. Hint: You have to add a member to Variable that distinguishes between constants and variables and check for it in set_value(). If you want to let the user define constants (rather than just having pi and e defined as constants), you'll have to add a notation to let the user express that, for example, const pi = 3.14 ;.
 */
 
 /*
 	Solution
-	2. With the possibility to change values after they are declared earlier calculation can be misinterpreted. But the advantange is to change values if they are false or needed to update. For example are exchange rates that changes reguarly.
+	2. With the possibility to change values after they are declared earlier calculation can be misinterpreted. But the advantage is to change values if they are false or needed to update. For example are exchange rates that changes regularly.
+
 
 */
 
@@ -143,7 +145,8 @@ void Token_stream::ignore(char c)
 struct Variable {
 	string name;
 	double value;
-	Variable(string n, double v) :name(n), value(v) { }
+	bool isConst{};
+	Variable(string n, double v, bool isConst) :name(n), value(v), isConst(isConst){ }
 };
 
 // Initialize empty global vector
@@ -272,11 +275,12 @@ double declaration()
 	if (t2.kind != '=') error("= missing in declaration of ", name);
 	double d = expression();
 	int searchResult{ is_declared(name) };
-	if (searchResult >= 0)
+	if (searchResult >= 0 && !names.at(searchResult).isConst) // TODO Continue here
 	{
 		names.at(searchResult).value = d;
 		return d;
 	}
+
 	names.push_back(Variable(name, d));
 	return d;
 }
