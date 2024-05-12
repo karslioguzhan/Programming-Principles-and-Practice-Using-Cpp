@@ -128,9 +128,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="01_Exercise.cpp" />
+    <ClCompile Include="Symbol_table.cpp" />
+    <ClCompile Include="Token_stream.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="GlobalVariables.h" />
     <ClInclude Include="std_lib_facilities.h" />
+    <ClInclude Include="Symbol_table.h" />
+    <ClInclude Include="Token.h" />
+    <ClInclude Include="Token_stream.h" />
+    <ClInclude Include="Variable.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
