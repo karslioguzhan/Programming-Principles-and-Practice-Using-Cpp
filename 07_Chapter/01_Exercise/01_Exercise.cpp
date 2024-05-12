@@ -271,17 +271,44 @@ double declaration()
 	// kind name
 	if (t.kind != 'a') error("name expected in declaration");
 	string name = t.name;
+	// Case for const
+	if (strcmp(name.c_str(), "const") == 0)
+	{
+		Token variableNameToken = ts.get();
+		if (variableNameToken.kind != 'a')
+		{
+			error("name expected in declaration");
+		}
+		string name = variableNameToken.name;
+		Token equalSignToken = ts.get();
+		if (equalSignToken.kind != '=') error("= missing in declaration of ", name);
+		double d = expression();
+		int searchResult{ is_declared(name) };
+		if (searchResult >= 0 && !names.at(searchResult).isConst) // TODO Continue here
+		{
+			names.at(searchResult).value = d;
+			names.at(searchResult).isConst = true;
+			return d;
+		}
+		names.push_back(Variable(name, d, true));
+		return d;
+	}
+	// Default case
 	Token t2 = ts.get();
 	if (t2.kind != '=') error("= missing in declaration of ", name);
 	double d = expression();
 	int searchResult{ is_declared(name) };
+	if (searchResult >= 0 && names.at(searchResult).isConst)
+	{
+		error("Cannot override const variable");
+	}
 	if (searchResult >= 0 && !names.at(searchResult).isConst) // TODO Continue here
 	{
 		names.at(searchResult).value = d;
 		return d;
 	}
 
-	names.push_back(Variable(name, d));
+	names.push_back(Variable(name, d, false));
 	return d;
 }
 
