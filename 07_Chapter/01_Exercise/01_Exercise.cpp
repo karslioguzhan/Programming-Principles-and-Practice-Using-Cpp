@@ -151,11 +151,20 @@ struct Variable {
 	Variable(string n, double v, bool isConst) :name(n), value(v), isConst(isConst) { }
 };
 
+class Symbol_table {
+	vector<Variable> var_table;
+public:
+	int is_declared(string);
+	double get_value(string);
+	void set_value(string, double);
+	double declaration();
+};
+
 // Initialize empty global vector
 vector<Variable> names{};
 
 // Get string values
-double get_value(string s)
+double Symbol_table::get_value(string s)
 {
 	// Iterate through vector and check if input string is in names
 	for (int i = 0; i < names.size(); ++i)
@@ -164,7 +173,7 @@ double get_value(string s)
 }
 
 // Setter for names with string and value
-void set_value(string s, double d)
+void Symbol_table::set_value(string s, double d)
 {
 	for (int i = 0; i <= names.size(); ++i)
 		if (names[i].name == s) {
@@ -175,7 +184,7 @@ void set_value(string s, double d)
 }
 
 // Check if string is declared
-int is_declared(string s)
+int Symbol_table::is_declared(string s)
 {
 	for (int i = 0; i < names.size(); ++i)
 		if (names[i].name == s) return i;
@@ -193,6 +202,7 @@ double primary()
 {
 	// Get token from token-stream
 	Token t = ts.get();
+	Symbol_table symbolTable{};
 	// Switch regarding of token kind
 	switch (t.kind) {
 	case '(':
@@ -207,7 +217,7 @@ double primary()
 	case number:
 		return t.value;
 	case name:
-		return get_value(t.name);
+		return symbolTable.get_value(t.name);
 	case squareRootVal:
 		return squareRootFunction();
 	case powVal:
@@ -267,7 +277,7 @@ double expression()
 }
 
 // Handle declarations
-double declaration()
+double Symbol_table::declaration()
 {
 	Token t = ts.get();
 	// kind name
@@ -318,10 +328,11 @@ double declaration()
 double statement()
 {
 	Token t = ts.get();
+	Symbol_table symbolTable{};
 	switch (t.kind) {
-		// distincition between declaration and expression
+	// distinction between declaration and expression
 	case let:
-		return declaration();
+		return symbolTable.declaration();
 	default:
 		ts.unget(t);
 		return expression();
