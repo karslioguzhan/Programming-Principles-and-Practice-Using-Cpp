@@ -1,4 +1,4 @@
-﻿// 01_Exercise.cpp : This exercuse divided into subtask
+﻿// 01_Exercise.cpp : This exercise divided into subtask
 /*
 	1. Allow underscores in the calculator's variable names.
 	2. Provide an assignment operator, =, so that you can change the value of a variable after you introduce it using let. Discuss why that can be useful and how it can be a source of problems.
