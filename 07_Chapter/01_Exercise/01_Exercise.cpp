@@ -8,12 +8,16 @@
 	6. Part of what every program should do is to provide some way of helping its user. Have the calculator print out some instructions for how to use the calculator if the user presses the H key (both upper- and lowercase).
 	7. Change the q and h commands to be quit and help, respectively.
 	8. The grammar in §7.6.4 is incomplete (we did warn you against over reliance on comments); it does not define sequences of statements, such as 4+4; 5-6;, and it does not incorporate the grammar changes outlined in §7.8. Fix that grammar. Also add whatever you feel is needed to that comment as the first comment of the calculator program and its overall comment.
+	9. Suggest three improvements (not mentioned in this chapter) to the calculator. Implement one of them.
 */
 
 /*
 	Solution
 	2. With the possibility to change values after they are declared earlier calculation can be misinterpreted. But the advantage is to change values if they are false or needed to update. For example are exchange rates that changes regularly.
-
+	3. Improvements suggestions
+		- Give the user to clear terminal screen
+		- Give the user the history of the calculation
+		- Refactoring of the code with header and cpp-files
 
 */
 
@@ -28,6 +32,8 @@ double powFunction();
 
 // Function prototype helper menu
 void printHelp();
+
+void clearScreen();
 
 // Token as struct
 struct Token {
@@ -68,12 +74,14 @@ const char k = 'k';
 const char squareRootVal{ 's' };
 const char powVal{ 'p' };
 const char help{ 'H' };
+const char clear{ 'C' };
 
 // Constants
 const string squareRoot{ "sqrt" };
 const string powName{ "pow" };
 const string helpName{ "help" };
 const string quitName{ "quit" };
+const string clearName{ "clear" };
 
 
 // Getter-Method for Tokens
@@ -105,8 +113,6 @@ Token Token_stream::get()
 		cin >> val;
 		return Token(number, val);
 	}
-	case help:
-		return Token(help);
 	default:
 		// Getting strings from input
 		if (isalpha(ch)) {
@@ -121,6 +127,7 @@ Token Token_stream::get()
 			if (s == squareRoot) return Token(squareRootVal);
 			if (s == powName) return Token(powVal);
 			if (s == helpName) return Token(help);
+			if (s == clearName) return Token(clear);
 			return Token(name, s);
 		}
 		// Error message if nothing valid is inserted
@@ -225,6 +232,9 @@ double primary()
 		return powFunction();
 	case help:
 		printHelp();
+		break;
+	case clear:
+		clearScreen();
 		break;
 	default:
 		error("primary expected");
@@ -341,6 +351,10 @@ double statement()
 		ts.unget(t);
 		expression();
 		return numeric_limits<double>::min();
+	case clear:
+		ts.unget(t);
+		expression();
+		return numeric_limits<double>::min();
 	default:
 		ts.unget(t);
 		return expression();
@@ -436,7 +450,14 @@ void printHelp()
 		<< "Supports variable definition\n"
 		<< "\tNon-Constant variables for example: # a = 12;\n"
 		<< "\tConstant variables for example: # const pi = 3.14\n"
+		<< "\t\"clear\" for clearing the command prompt screen\n"
 		<< "\t\"quit\" for quit\n";
+}
+
+// Works only for windows
+void clearScreen()
+{
+	system("cls");
 }
 
 // Main function
