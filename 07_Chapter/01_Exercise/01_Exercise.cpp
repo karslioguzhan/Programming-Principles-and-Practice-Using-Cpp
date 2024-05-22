@@ -6,6 +6,7 @@
 	4. The get_value(), set_value(), is_declared(), and define_name() functions all operate on the variable var_table. Define a class called Symbol_table with a member var_table of type vector<Variable> and member functions get(), set(), is_declared(), and declare(). Rewrite the calculator to use a variable of type Symbol_table.
 	5. Modify Token_stream::get() to return Token(print) when it sees a newline. This implies looking for whitespace characters and treating newline ('\n') specially. You might find the standard library function isspace(ch), which returns true if ch is a whitespace character, useful.
 	6. Part of what every program should do is to provide some way of helping its user. Have the calculator print out some instructions for how to use the calculator if the user presses the H key (both upper- and lowercase).
+	7. Change the q and h commands to be quit and help, respectively.
 */
 
 /*
@@ -70,6 +71,8 @@ const char help{ 'H' };
 // Constants
 const string squareRoot{ "sqrt" };
 const string powName{ "pow" };
+const string helpName{ "help" };
+const string quitName{ "quit" };
 
 
 // Getter-Method for Tokens
@@ -84,12 +87,6 @@ Token Token_stream::get()
 	{
 		cin.get(ch); 
 	} while (ch == ' ');
-
-	if (ch == 'h')
-	{
-		ch = toupper(ch);
-	}
-
 	// Switch for determining token type
 	switch (ch) {
 	case '\n':
@@ -118,9 +115,11 @@ Token Token_stream::get()
 			cin.unget();
 			if (s == "#") return Token(let);
 			if (s == "exit") return Token(quit);
+			if (s == quitName) return Token(quit);
 			if (s.size() == 1 && s[0] == k) return Token(number, 1000);
 			if (s == squareRoot) return Token(squareRootVal);
 			if (s == powName) return Token(powVal);
+			if (s == helpName) return Token(help);
 			return Token(name, s);
 		}
 		// Error message if nothing valid is inserted
@@ -435,14 +434,15 @@ void printHelp()
 		<< "Supports Braces ()\n"
 		<< "Supports variable definition\n"
 		<< "\tNon-Constant variables for example: # a = 12;\n"
-		<< "\tConstant variables for example: # const pi = 3.14\n";
+		<< "\tConstant variables for example: # const pi = 3.14\n"
+		<< "\t\"quit\" for quit\n";
 }
 
 // Main function
 int main()
 {
 	try {
-		cout << "=======================================\nCalculator program (Press h for help)\n=======================================\n";
+		cout << "=======================================\nCalculator program (Insert \"help\" for help)\n=======================================\n";
 		calculate();
 		return 0;
 	}
