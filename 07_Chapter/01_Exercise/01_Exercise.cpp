@@ -5,7 +5,7 @@
 	3. Provide named constants that you really can't change the value of. Hint: You have to add a member to Variable that distinguishes between constants and variables and check for it in set_value(). If you want to let the user define constants (rather than just having pi and e defined as constants), you'll have to add a notation to let the user express that, for example, const pi = 3.14 ;.
 	4. The get_value(), set_value(), is_declared(), and define_name() functions all operate on the variable var_table. Define a class called Symbol_table with a member var_table of type vector<Variable> and member functions get(), set(), is_declared(), and declare(). Rewrite the calculator to use a variable of type Symbol_table.
 	5. Modify Token_stream::get() to return Token(print) when it sees a newline. This implies looking for whitespace characters and treating newline ('\n') specially. You might find the standard library function isspace(ch), which returns true if ch is a whitespace character, useful.
-
+	6. Part of what every program should do is to provide some way of helping its user. Have the calculator print out some instructions for how to use the calculator if the user presses the H key (both upper- and lowercase).
 */
 
 /*
@@ -16,13 +16,16 @@
 */
 
 #include "std_lib_facilities.h"
-#include <algorithm>
+#include <limits>
 
 // SquareRoot function prototype
 double squareRootFunction();
 
 // Pow function prototype
 double powFunction();
+
+// Function prototype helper menu
+void printHelp();
 
 // Token as struct
 struct Token {
@@ -62,6 +65,7 @@ const char name = 'a';
 const char k = 'k';
 const char squareRootVal{ 's' };
 const char powVal{ 'p' };
+const char help{ 'H' };
 
 // Constants
 const string squareRoot{ "sqrt" };
@@ -81,6 +85,11 @@ Token Token_stream::get()
 		cin.get(ch); 
 	} while (ch == ' ');
 
+	if (ch == 'h')
+	{
+		ch = toupper(ch);
+	}
+
 	// Switch for determining token type
 	switch (ch) {
 	case '\n':
@@ -98,6 +107,8 @@ Token Token_stream::get()
 		cin >> val;
 		return Token(number, val);
 	}
+	case help:
+		return Token(help);
 	default:
 		// Getting strings from input
 		if (isalpha(ch)) {
@@ -212,6 +223,9 @@ double primary()
 		return squareRootFunction();
 	case powVal:
 		return powFunction();
+	case help:
+		printHelp();
+		break;
 	default:
 		error("primary expected");
 	}
@@ -323,6 +337,10 @@ double statement()
 	// distinction between declaration and expression
 	case let:
 		return symbolTable.declaration();
+	case 'H':
+		ts.unget(t);
+		expression();
+		return numeric_limits<double>::min();
 	default:
 		ts.unget(t);
 		return expression();
@@ -346,7 +364,11 @@ void calculate()
 		while (t.kind == print) t = ts.get();
 		if (t.kind == quit) return;
 		ts.unget(t);
-		cout << result << statement() << endl;
+		double resultStatement{ statement() };
+		if (resultStatement != numeric_limits<double>::min())
+		{
+			cout << result << resultStatement << endl;
+		}
 	}
 	catch (runtime_error& e) {
 		cerr << e.what() << endl;
@@ -405,10 +427,22 @@ double powFunction()
 	}
 }
 
+void printHelp()
+{
+	std::cout << "Supported calculations:\n\t+\tAddition\n\t-\tSubtraction\n\t*\tMultiplication\n\t/\tDivision\n\t%\tModulo\n"
+		<< "\tpow(a,b)\tPower\n\tsqrt(a)\tSquare Root\n"
+		<< "Printing results with ';' or a new line"
+		<< "Supports Braces ()\n"
+		<< "Supports variable definition\n"
+		<< "\tNon-Constant variables for example: # a = 12;\n"
+		<< "\tConstant variables for example: # const pi = 3.14\n";
+}
+
 // Main function
 int main()
 {
 	try {
+		cout << "=======================================\nCalculator program (Press h for help)\n=======================================\n";
 		calculate();
 		return 0;
 	}
