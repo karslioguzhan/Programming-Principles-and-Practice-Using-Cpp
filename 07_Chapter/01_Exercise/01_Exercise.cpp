@@ -9,6 +9,7 @@
 	7. Change the q and h commands to be quit and help, respectively.
 	8. The grammar in §7.6.4 is incomplete (we did warn you against over reliance on comments); it does not define sequences of statements, such as 4+4; 5-6;, and it does not incorporate the grammar changes outlined in §7.8. Fix that grammar. Also add whatever you feel is needed to that comment as the first comment of the calculator program and its overall comment.
 	9. Suggest three improvements (not mentioned in this chapter) to the calculator. Implement one of them.
+	10. Modify the calculator to operate on ints (only); give errors for overflow and underflow. Hint: Use narrow_cast (§7.5).
 */
 
 /*
@@ -111,6 +112,16 @@ Token Token_stream::get()
 		cin.unget();
 		double val;
 		cin >> val;
+		if (val > numeric_limits<int>::max())
+		{
+			error("Overflow Error!");
+		}
+		else if (val < numeric_limits<int>::min())
+		{
+			error("Underflow Error!");
+		}
+		// Check if actual value is suitable for ints
+		narrow_cast<int>(val);
 		return Token(number, val);
 	}
 	default:
