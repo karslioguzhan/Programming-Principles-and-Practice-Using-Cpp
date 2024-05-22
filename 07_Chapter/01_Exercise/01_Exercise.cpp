@@ -75,35 +75,22 @@ Token Token_stream::get()
 	if (full) { full = false; return buffer; }
 	// Read input as character
 	char ch{};
-	cin >> ch;
+	// Get all chars
+	do
+	{
+		cin.get(ch); 
+	} while (ch == ' ');
+
 	// Switch for determining token type
 	switch (ch) {
 	case '\n':
 		return Token{ print };
-	case '(':
-	case ')':
-	case '+':
-	case '-':
-	case '*':
-	case '/':
-	case '%':
-	case ';':
-	case '=':
-	case ',':
-	case let:
+	case '(': case ')': case '+': case '-': case '*': case '/': case '%':
+	case ';': case '=': case ',': case let:
 		// non numeric characters
 		return Token(ch);
-	case '.':
-	case '0':
-	case '1':
-	case '2':
-	case '3':
-	case '4':
-	case '5':
-	case '6':
-	case '7':
-	case '8':
-	case '9':
+	case '.': case '0': case '1': case '2': case '3': case '4': case '5':
+	case '6': case '7': case '8': case '9':
 	{
 		// Return numeric values
 		cin.unget();
