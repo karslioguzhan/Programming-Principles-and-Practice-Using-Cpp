@@ -7,6 +7,7 @@
 	5. Modify Token_stream::get() to return Token(print) when it sees a newline. This implies looking for whitespace characters and treating newline ('\n') specially. You might find the standard library function isspace(ch), which returns true if ch is a whitespace character, useful.
 	6. Part of what every program should do is to provide some way of helping its user. Have the calculator print out some instructions for how to use the calculator if the user presses the H key (both upper- and lowercase).
 	7. Change the q and h commands to be quit and help, respectively.
+	8. The grammar in §7.6.4 is incomplete (we did warn you against over reliance on comments); it does not define sequences of statements, such as 4+4; 5-6;, and it does not incorporate the grammar changes outlined in §7.8. Fix that grammar. Also add whatever you feel is needed to that comment as the first comment of the calculator program and its overall comment.
 */
 
 /*
