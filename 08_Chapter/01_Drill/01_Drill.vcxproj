@@ -127,7 +127,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="01_Drill.cpp" />
+    <ClCompile Include="my.cpp" />
+    <ClCompile Include="use.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="my.h" />
+    <ClInclude Include="std_lib_facilities.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
