@@ -96,5 +96,33 @@ recovery                                Allows to retain code if incorrectly cha
 revision history                        Show the changes that ware committed (usage of a source control management software like git is recommended)
 scaffolding                             Is how the project is designed, but it can mean the techniques like code generation and project generation too.
 symbolic constant                       Symbolic constants are nothing more than a label or name that is used to represent some fixed value that never changes throughout the course of a program. 
+activation record
+argument
+argument passing
+call stack
+class scope
+const                                   Constant requires a initialization and tells the compiler to prevent the programmer from modifying it
+constexpr
+extern
+forward declaration
+function definition
+global scope
+initializer
+local scope
+namespace
+namespace scope
+parameter
+pass-by-const-reference
+pass-by-reference
+pass-by-value
+recursion
+return
+return value
+scope
+statement scope
+technicalities
+undeclared identifier
+using declaration
+using directive
 
 
