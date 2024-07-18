@@ -1,5 +1,4 @@
-// 04_Exercise.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
+// 04_Exercise.cpp : An int can hold integers only up to a maximum number. Find an approximation of that maximum number by using fibonacc().
 
 #include <iostream>
 #include <limits>
