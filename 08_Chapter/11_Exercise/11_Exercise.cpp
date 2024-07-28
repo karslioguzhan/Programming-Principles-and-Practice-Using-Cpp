@@ -11,7 +11,7 @@ void statisticCalc(const std::vector<double>& inputVector, std::vector<double>& 
 std::stringstream output(std::string label, const std::vector<double>& resultVector);
 int main()
 {
-	std::vector<double> inputVector1{ 0, 30, 10, 50 };
+	std::vector<double> inputVector1{ 0, 40, 10, 50 };
 	std::vector<double> inputVector2{ 0, 30, 10, 50 , 25 };
 	std::vector<double> result1, result2;
 	statisticCalc(inputVector1, result1);
@@ -35,15 +35,15 @@ void statisticCalc(const std::vector<double>& inputVector, std::vector<double> &
 	outputVector.push_back(*tempVector.begin());
 
 	// Median calculation
-	double midSize{ static_cast<double>(tempVector.size()) / 2 };
+	int size{ static_cast<int>(tempVector.size())};
 	double median{};
-	if (static_cast<int>(midSize) % 2 == 0)
+	if (size % 2 == 0)
 	{
-		median = (tempVector.at(midSize) + tempVector.at(midSize - 1)) / 2;
+		median = static_cast<double> (tempVector.at((size - 1) / 2) + tempVector.at(size / 2)) / 2.0;
 	}
 	else
 	{
-		median = tempVector.at(midSize);
+		median = tempVector.at(size/2);
 	}
 
 	outputVector.push_back(median);
