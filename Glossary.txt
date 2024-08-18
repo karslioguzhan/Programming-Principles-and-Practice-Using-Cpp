@@ -96,33 +96,33 @@ recovery                                Allows to retain code if incorrectly cha
 revision history                        Show the changes that ware committed (usage of a source control management software like git is recommended)
 scaffolding                             Is how the project is designed, but it can mean the techniques like code generation and project generation too.
 symbolic constant                       Symbolic constants are nothing more than a label or name that is used to represent some fixed value that never changes throughout the course of a program. 
-activation record
-argument
-argument passing
-call stack
-class scope
+activation record                       An activation record is a contiguous block of storage that manages information required by a single execution of a procedure.
+argument                                Sometimes also called function parameter. Are the inputs for an function.
+argument passing                        A argument can be passed via copy or reference. 
+call stack                              In programming, a call stack is an ordered list of the functions (or stack frames) a program has to execute before it returns a result.
+class scope                             Defines a area inside a scope.
 const                                   Constant requires a initialization and tells the compiler to prevent the programmer from modifying it
-constexpr
-extern
-forward declaration
-function definition
-global scope
-initializer
-local scope
-namespace
-namespace scope
-parameter
-pass-by-const-reference
-pass-by-reference
-pass-by-value
-recursion
-return
-return value
-scope
-statement scope
-technicalities
-undeclared identifier
-using declaration
-using directive
+constexpr                               Defines that for example the variable is calculated in compile time.
+extern                                  This keyword is used to state that something is only a declaration and not a definition. (rarely useful)
+forward declaration                     In computer programming, a forward declaration is a declaration of an identifier for which the programmer has not yet given a complete definition.
+function definition                     Are declarations which also specifies the entity fully.
+global scope                            The area of text outside any other scope
+initializer                             An initializer specifies an initial value to a data object and is optional in a data declaration.
+local scope                             Space between {...} or in a function argument list
+namespace                               Is a mechanism to grouping declarations.
+namespace scope                         A named scope nested in the global scope or in another namespace.
+parameter                               Also called argument. Look at argument for description.
+pass-by-const-reference                 Passes a variable as a reference, which cannot be modified.
+pass-by-reference                       Passes a variable as a reference.
+pass-by-value                           Passes a variable through making a copy. Modifying this variable doesn't change the original value.
+recursion                               Recursion occurs when the definition of a concept or process depends on a simpler or previous version of itself. For example Fibonacci
+return                                  Is used to return a value from a function.
+return value                            The value which is returned from the function.
+scope                                   A region of program text
+statement scope                         A region inside an statement like in a for-statement.
+technicalities                          Can be understood as the vocabulary and grammar for an language.
+undeclared identifier                   Typically undeclared identifier means it is searching for a variable that has not been defined.
+using declaration                       Using-declarations introduce a member of another namespace into the current namespace or block scope.
+using directive                         The using directive allows you to use types defined in a namespace without specifying the fully qualified namespace of that type. For example. using namespace std;
 
 
