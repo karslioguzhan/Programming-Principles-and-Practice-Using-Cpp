@@ -1,0 +1,46 @@
+1. What are the two parts of a class, as described in the chapter?
+    - Data members -> Attribute
+    - Function members -> methods
+
+2. What is the difference between the interface and the implementation in a class?
+    - Interface is the part where the user access directly (Public)
+    - Implementation is the part that is called indirectly (Private)
+
+3. What are the limitations and problems of the original Date struct that is created in the chapter?
+    - Direct access to the member variable is not best practice
+    - No checks for valid inputs for example negative years etc.
+    - No constructor was used at first, which bloats up the declaration of a legit date
+
+4. Why is a constructor used for the Date type instead of an init_day() function?
+    - Because with a constructor the possibility to create an invalid date is minimized
+    - It's convenient because other variables are defined alike
+
+5. What is an invariant? Give examples.
+    - A invariant is a valid value of a given type. 
+    - Example: A invariant Date can be a valid date in the past, present or future
+
+6. When should functions be put in the class definition, and when should they be defined outside the class? Why?
+    - Function which are used inside a class for example when modifying attributes should be defined inside a class
+    - Function which are no directly related to the class should be implemented outside the class
+    - Because with this practice we can use general purpose function for other classes and encapsulate class specific operations
+
+7. When should operator overloading be used in a program? Give a list of operators that you might want to overload (each with a reason).
+    - We overloading operators when we want to provide a conventional notation for the types we create. 
+    - For example when we want to print something with std::cout we overload << to define how the user defined type is to printed
+    - List of possible overloading
+        - ++ Increment -> To define how a user defined type is to incremented
+        - -- Decrement -> To define how a user defined type is to decremented
+        - << Extraction -> For example how to print user defined types
+        - <, >, == -> To compare two user defined types
+
+8. Why should the public interface to a class be as small as possible?
+    - Because we provide only functions that are needed (feature creep)
+    - Easier to debug because of lesser function to be checked
+
+9. What does adding const to a member function do?
+    - A const member function guarantees that a function doesn't change member variables
+    - For example getter methods should be const
+
+10. Why are "helper functions" best placed outside the class definition?
+    - Because helper functions could be used for different user defined types
+    - For adding new functionality which isn't needed in a class
