@@ -61,7 +61,6 @@ private:
 };
 
 // Helper functions forward declaration
-void f();
 std::ostream& operator<<(std::ostream& os, const Date& d);
 
 
@@ -73,9 +72,13 @@ int main()
 	Date tomorrow{ today };
 	tomorrow.add_day(1);
 
+	Date monthPlus20{ today };
+	monthPlus20.add_month(20);
+
 	// Task 3: output today and tomorrow
 	std::cout << "Today\n\t" << today << "\n";
 	std::cout << "Tomorrow\n\t" << tomorrow << "\n";
+	std::cout << "20 Month added\n\t" << monthPlus20 << "\n";
 
 
 }
@@ -109,7 +112,7 @@ void Date::add_day(int n)
 		}
 		else
 		{
-			m = static_cast<Month>(++tempMonth);
+			add_month(1);
 		}
 	}
 	else
@@ -120,6 +123,12 @@ void Date::add_day(int n)
 
 void Date::add_month(int n)
 {
+	int monthAsInt{ static_cast<int>(m) };
+	int yearsCount{ (monthAsInt + n) / 12 };
+	add_year(yearsCount);
+	int restMonth{ (monthAsInt + n) % 12 };
+	m = static_cast<Month>(restMonth);
+
 }
 
 void Date::add_year(int n)
