@@ -124,5 +124,20 @@ technicalities                          Can be understood as the vocabulary and 
 undeclared identifier                   Typically undeclared identifier means it is searching for a variable that has not been defined.
 using declaration                       Using-declarations introduce a member of another namespace into the current namespace or block scope.
 using directive                         The using directive allows you to use types defined in a namespace without specifying the fully qualified namespace of that type. For example. using namespace std;
-
-
+built-in types                          The types C++ language is provide. For example char, int and double
+user-defined types                      Types that are for example in the ISO standard C++ implementation like string or vector or from the user self created types for a specific task.
+class                                   A user defined type which have members like data & function members
+constructor                             The function which creates an object from the class. This can be the default constructor or a user defined one.
+destructor                              The function which is executed when a object should be deleted. For example to free occupied memory from the heap.
+enum                                    A less stricter version of the enum classes. The difference is that plain enums implicitly "exporting" their enumerators to the scope of the enumeration.
+enumeration                             Is a simple user defined type which specifying a set of values (its enumerators) as a symbolic constant
+enumerator                              The values inside a enumerators
+helper function                         Also called convenience or auxiliary functions. A helper function is a function (usually supplied by the writer of a class) that does not need direct access to the representation of the class, yet is seen as part of the useful interface to the class. 
+implementation                          Implementation can be understood specific to a task. For functions: This refers to the actual code that defines how a function behaves. For Classes: This involves defining the member functions of a class, often in a separate .cpp file.
+in-class initializer                    An in-class initializer in C++ is a way to provide a default value for a non-static class member directly in the class definition.
+inlining                                Inlining in C++ is a compiler optimization technique where the compiler replaces a function call with the actual body of the function.
+interface                               The interface are the accessible parts of a class for performing actions like getting a value. The interface should be separated from the implementation.
+representation                          The type "knows" how to represent the data needed in a object.
+struct                                  Technically struct and classes are the same. But the struct have the default accessibility as public and the class default is private.
+structure                               A structure in C++ is a user-defined data type that allows you to group related data elements of different types under a single name.
+valid state                             With the right constructor it is possible to nearly guarantee that state/type is correct. For example the constructor checks when we have a class named Date if the month inserted is greater than 13.
