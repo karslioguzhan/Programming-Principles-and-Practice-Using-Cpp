@@ -1,0 +1,7 @@
+Task: List sets of plausible operations for the example of real-world objects in §9.1 (such as toaster).
+
+List of operations:
+    - Power-On toaster
+    - Power-Off toaster
+    - Start toasting
+    - Eject toast
