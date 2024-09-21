@@ -63,3 +63,18 @@ std::ostream& operator<<(std::ostream& os, const Name_pairs& namePairsInput)
 	}
 	return os;
 }
+
+bool operator==(const Name_pairs& pair1, const Name_pairs& pair2)
+{
+	bool equalityCheck(pair1.age == pair2.age && pair1.name == pair2.name);
+	return equalityCheck;
+}
+
+bool operator!=(const Name_pairs& pair1, const Name_pairs& pair2)
+{
+	bool unequalityCheck(pair1.age != pair2.age && pair1.name != pair2.name);
+	return unequalityCheck;
+}
+
+
+

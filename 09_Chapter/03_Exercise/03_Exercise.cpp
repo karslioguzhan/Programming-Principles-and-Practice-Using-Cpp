@@ -17,9 +17,13 @@ int main()
         std::cout << "Reading ages was not successful.\n";
         return -1;
     }
+    Name_pairs unsorted{ pairs };
     std::cout << "Before sorting!\n" << pairs;
     pairs.sortAlphabetical();
     std::cout << "After sorting!\n" << pairs;
+
+    std::cout << "Check for equality: " << (pairs == pairs) << "\n";
+    std::cout << "Check for unequality: " << (pairs != unsorted) << "\n";
 
     return 0;
 }
