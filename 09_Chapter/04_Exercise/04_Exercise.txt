@@ -1,0 +1,25 @@
+4.Look at the headache-inducing last example of §8.4. Indent it properly and explain the meaning of each construct. Note that the example doesn't do anything meaningful; it is pure obfuscation.
+
+Code from section:
+// dangerously ugly code
+struct X {
+void f(int x){
+struct Y{
+inf f() {return 1;} int m;}
+int m;
+m=x;
+m=x; Y m2;
+return f(m2.f());}
+int m; void g(int m){
+if (m) f(m+2); else {
+g(m+2);}}
+X() {} void m3(){
+}
+void main() {
+X a; a.f(2);}
+};
+
+Conclusion:
+    - Because of lacking indention and writing mostly in same line the code is aweful to read
+    - Naming of the types are also not best practice because it is unknown what the intention of the code or functions is
+    - Most IDEs have automaticly style guides which should be used or style guides from best practices like google styleguide should be used for consistency
