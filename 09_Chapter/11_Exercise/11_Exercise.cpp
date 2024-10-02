@@ -15,5 +15,7 @@ int main()
 	std::cout << secondDate << "\n";
 	std::cout << "Is leap year: " << Chrono::leapyear(1900) << "\n";
 	int calendarWeek{ Chrono::week_of_year(firstDate) };
+	Chrono::Date nextWork{ Chrono::nextWorkday(firstDate) };
+	std::cout << "Next Workday: \n" << nextWork;
 
 }

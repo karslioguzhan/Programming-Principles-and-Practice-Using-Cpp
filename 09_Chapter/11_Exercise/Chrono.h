@@ -2,6 +2,8 @@
 #include <iostream>
 #include <sstream>
 #include <ostream>
+#include <chrono>
+
 namespace Chrono
 {
 	enum class Month
@@ -45,6 +47,7 @@ namespace Chrono
 	bool leapyear(int y);
 	int week_of_year(const Date& d);
 	int dayInMonth(Month m, int y);
+	Date nextWorkday(const Date& d);
 
 	bool operator==(const Date& a, const Date& b);
 	bool operator!=(const Date& a, const Date& b);

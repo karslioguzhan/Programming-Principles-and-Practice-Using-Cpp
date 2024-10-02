@@ -20,7 +20,18 @@ namespace Chrono {
 
 	void Date::add_day(int n)
 	{
-		// TODO
+		int maxDays{ dayInMonth(m, y) };
+		int actualMonth{ static_cast<int>(Month(m)) };
+		if (maxDays < (d + n))
+		{
+			d += n;
+		}
+		else
+		{
+			int newDay{ (d + n) - maxDays };
+			d = newDay;
+			m = Month(actualMonth + 1);
+		}
 	}
 
 	void Date::add_month(int n)
@@ -64,12 +75,12 @@ namespace Chrono {
 		return true;
 	}
 
-	
+
 
 	// Exercise 10
 	bool leapyear(int y)
 	{
-		if (y % 100 == 0 && y % 4 == 0 && y%400 == 0)
+		if (y % 100 == 0 && y % 4 == 0 && y % 400 == 0)
 		{
 			return true;
 		}
@@ -87,12 +98,12 @@ namespace Chrono {
 		int actualMonth{ static_cast<int>(d.month()) };
 		int dayOfActualMonth(d.day());
 		int numOfDays{ dayOfActualMonth };
-		for (int numMonth{1}; numMonth < actualMonth; ++numMonth)
+		for (int numMonth{ 1 }; numMonth < actualMonth; ++numMonth)
 		{
 			numOfDays += dayInMonth(Month(numMonth), d.year());
 		}
 		// Calculate calender week (approximation)
-		return numOfDays/7;
+		return numOfDays / 7;
 	}
 
 	int dayInMonth(Month m, int y)
@@ -114,6 +125,36 @@ namespace Chrono {
 		return days_in_month;
 	}
 
+	Date nextWorkday(const Date& d)
+	{
+		std::chrono::day actualDay{ static_cast<unsigned int>(d.day()) };
+		std::chrono::month actualMonth{ std::chrono::month(static_cast<int>(d.month())) };
+		std::chrono::year actualYear{ d.year() };
+		std::chrono::year_month_day actualDate{ actualYear, actualMonth, actualDay };
+		std::chrono::weekday actualWeekday{ actualDate };
+		int addDays{};
+		switch (actualWeekday.c_encoding())
+		{
+		case 5:
+			addDays = 3;
+			break;
+		case 6:
+			addDays = 2;
+			break;
+		default:
+			addDays = 1;
+			break;
+		}
+		std::chrono::year_month_day newDate{ std::chrono::sys_days{actualDate} + std::chrono::days{addDays} };
+		int newYear{ newDate.year() };
+		unsigned  newDay{ newDate.day() };
+		unsigned newMonth{ newDate.month() };
+
+		Date newRightDate{ newYear, Month(newMonth), static_cast<int>(newDay) };
+
+		return newRightDate;
+	}
+
 	bool operator==(const Date& a, const Date& b)
 	{
 		return a.year() == b.year() && a.month() == b.month() && a.day() == b.day();
@@ -123,7 +164,7 @@ namespace Chrono {
 	{
 		return !(a == b);
 	}
-	
+
 	std::ostream& operator<<(std::ostream& os, const Date& d)
 	{
 		os << "(" << d.year() << "," << static_cast<int>(d.month()) << "," << d.day() << ")";
