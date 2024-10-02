@@ -42,7 +42,7 @@ namespace Chrono {
 	bool is_date(int y, Month m, int d)
 	{
 		if (d <= 0) return false;
-		if (m<Month::jan || Month::dec >m) return false;
+		if (m<Month::jan || m > Month::dec) return false;
 
 		int days_in_month{ 31 };
 
@@ -67,7 +67,16 @@ namespace Chrono {
 	// Exercise 10
 	bool leapyear(int y)
 	{
+		if (y % 100 == 0 && y % 4 == 0 && y%400 == 0)
+		{
+			return true;
+		}
+		else if (y % 4 == 0 && y % 100 != 0)
+		{
+			return true;
+		}
 
+		return false;
 	}
 
 	bool operator==(const Date& a, const Date& b)
@@ -79,11 +88,48 @@ namespace Chrono {
 	{
 		return !(a == b);
 	}
-
-	std::ostream& operator<<(std::ostream os, const Date& d)
+	
+	std::ostream& operator<<(std::ostream& os, const Date& d)
 	{
-		return os << '(' << d.year() << ',' << d.month() << ',' << d.day() << ')';
+		os << "(" << d.year() << "," << static_cast<int>(d.month()) << "," << d.day() << ")";
+		return os;
 	}
 
-	// TODO continue here page 337
+	std::istream& operator>>(std::istream& is, Date& dd)
+	{
+		int y, m, d;
+		char ch1, ch2, ch3, ch4;
+		is >> ch1 >> y >> ch2 >> m >> ch3 >> d >> ch4;
+		if (!is) return is;
+		if (ch1 != '(' || ch2 != ',' || ch3 != ',' || ch4 != ')')
+		{
+			is.clear(std::ios_base::failbit);
+			return is;
+		}
+		dd = Date(y, Month(m), d);
+		return is;
+	}
+
+	enum class Day
+	{
+		sunday, monday, tuesday, wednesday, thursday, friday, saturday
+	};
+
+	Day day_of_week(const Date& d)
+	{
+		// TODO
+		return Day::monday;
+	}
+
+	Date next_Sunday(const Date& d)
+	{
+		// TODO
+		return d;
+	}
+
+	Date next_weekday(const Date& d)
+	{
+		// TODO
+		return d;
+	}
 }

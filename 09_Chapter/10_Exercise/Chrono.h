@@ -1,5 +1,7 @@
 #pragma once
 #include <iostream>
+#include <sstream>
+#include <ostream>
 namespace Chrono
 {
 	enum class Month
@@ -24,11 +26,18 @@ namespace Chrono
 		void add_day(int n);
 		void add_month(int n);
 		void add_year(int n);
+
+		friend std::ostream& operator<<(std::ostream& os, const Date& d);
+		friend std::istream& operator>>(std::istream& is, Date& dd);
+
+
 	private:
 		int y;
 		Month m;
 		int d;
 	};
+
+
 
 	bool is_date(int y, Month m, int d);
 	bool leapyear(int y);
@@ -36,6 +45,5 @@ namespace Chrono
 	bool operator==(const Date& a, const Date& b);
 	bool operator!=(const Date& a, const Date& b);
 
-	std::ostream& operator<<(std::ostream& os, const Date& d);
-	std::istream& operator>>(std::istream& is, Date& dd);
+
 }
