@@ -1,0 +1,66 @@
+1. When dealing with input and output, how is the variety of devices dealt with in most modern computers?
+    - The I/O Library provide a layer of abstraction of I/O
+    - Because of the library mostly a device specific in or output is not needed 
+
+2. What, fundamentally, does an istream do?
+    - istream deals with streams of input
+
+3. What, fundamentally, does an ostream do?
+    - ostream deals with streams of output
+
+4. What, fundamentally, is a file?
+    - At the most basic level is a file simply a sequence of bytes numbered 0 upwards
+
+5. What is a file format?
+    - A file format describes the rules that determine what the byte stream of mean.
+
+6. Name four different types of devices that can require I/O for a program.
+    - Stream of data items (files, networks, display devices)
+    - Interaction with a keyboard
+    - Interaction through a graphical interface
+    - Interaction with a mouse
+
+7. What are the four steps for reading a file?
+    - 1: Know the name of the file
+    - 2: Open the file for reading
+    - 3: Read in the characters of that file
+    - 4: Close the file (typically done implicitly)
+
+8. What are the four steps for writing a file?
+    - 1: Name the file
+    - 2: Open the file for writing
+    - 3: Write out desired objects into file
+    - 4: Close the file (typically done implicitly)
+
+9. Name and define the four stream states.
+    - good() -> The operations succeeded
+    - eof() -> We hit end of input (end of file)
+    - fail() -> Something unexpected happened (for example: wanted a digit get an char)
+    - bad() -> Something unexpected and serious happened (for example: disk read error)
+
+10. Discuss how the following input problems can be resolved:
+    a. The user typing an out-of-range value
+        - We can check if stream is corrupted with cin.bad() and can throw an error
+    b. Getting no value (end of file)
+        - We check if std::cin.eof() is true
+    c. The user typing something of the wrong type
+        - We check for fail and recover std::cin with clear()
+
+11. In what way is input usually harder than output?
+    - Because our logic and how the data is outputted is in the hands of the programmer
+
+12. In what way is output usually harder than input?
+    - When we deals with special devices
+    - When the type we want to output is complex
+
+13. Why do we (often) want to separate input and output from computation?
+    - Because for correct computation the in/output must be done correct
+    - If we do computation in the same time or scope we can get false results
+
+14. What are the two most common uses of the istream member function clear()?
+    - To set the state to good()
+    - To continue input after an fail()
+
+15. What are the usual function declarations for << and >> for a user-defined type X?
+    - std::istream& operator>>(std::istream& is, Class& XYZ)
+    - std::ostream& operator<<(std::istream& is, const Class& XYZ)
