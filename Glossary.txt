@@ -141,3 +141,26 @@ representation                          The type "knows" how to represent the da
 struct                                  Technically struct and classes are the same. But the struct have the default accessibility as public and the class default is private.
 structure                               A structure in C++ is a user-defined data type that allows you to group related data elements of different types under a single name.
 valid state                             With the right constructor it is possible to nearly guarantee that state/type is correct. For example the constructor checks when we have a class named Date if the month inserted is greater than 13.
+bad()                                   Returns true if the badbit error state flag is set for the stream.
+buffer                                  Buffer is a generic term that refers to a block of memory that serves as a temporary placeholder.
+clear()                                 Sets a new value for the stream's internal error state flags.
+close()                                 Closes the file for reading/writing.
+device driver                           Is a computer program that operates or controls a particular type of device that is attached to a computer
+eof()                                   This flag is set by all standard input operations when the End-of-File is reached in the sequence associated with the stream.
+fail()                                  The class std::ios_base::failure defines an exception object that is thrown on failure by the functions in the Input/Output library.
+good()                                  Returns true if the most recent I/O operation on the stream completed successfully. 
+file                                    At the most basic form a sequence of bytes.
+ifstream                                The class template ifstream implements high-level input operations on file-based streams. Get the data from the input file.
+input device                            A device to input data. For example keyboard.
+input operator                          The input/extraction  operator >> takes the data from the stream
+iostream                                Is the library for controlling standard input and output streams.
+istream                                 The class template istream provides support for high level input operations on character streams.
+ofstream                                The class template basic_ofstream implements high-level output operations on file based streams.
+open()                                  Opens a file and associates it with the stream
+ostream                                 The class template basic_ostream provides support for high level output operations on character streams.
+output device                           Are devices that output data, for example screens.
+output operator                         The input/insertion  operator << inserts the data to the output.
+stream state                            Define the actual state of the stream (for example good or eof)
+structured file                         Is a file that is represented with a certain way. For example comma separated value (CSV)
+terminator                              Is a character that is from the user defined which indicates if a input should be terminated.
+unget()                                 Attempts to decrease the current location in the stream by one character, making the last character extracted from the stream once again available to be extracted by input operations.
