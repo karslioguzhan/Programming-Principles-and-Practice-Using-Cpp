@@ -42,10 +42,9 @@ int main()
 	// Create output file
 	std::string fileName{ "raw_temps.txt" };
 	std::ofstream outputFile{ fileName };
-	outputFile << "Hour," << "Temperature\n";
 	for (auto actualReading : vectorOfReadings)
 	{
-		outputFile << actualReading.hour << "," << actualReading.temperature << "\n";
+		outputFile << actualReading.hour << " " << actualReading.temperature << "\n";
 	}
 	outputFile.close();
 }
