@@ -5,6 +5,7 @@
 
 #include "std_lib_facilities.h"
 #include <limits>
+#include "RomanIntegers.h"
 
 // SquareRoot function prototype
 double squareRootFunction();
@@ -86,24 +87,26 @@ Token Token_stream::get()
 	case ';': case '=': case ',': case let:
 		// non numeric characters
 		return Token(ch);
-	case '.': case '0': case '1': case '2': case '3': case '4': case '5':
-	case '6': case '7': case '8': case '9':
+	case 'I': case 'V': case 'X': case 'L': case 'C': case 'D':
+	case 'M':
 	{
 		// Return numeric values
 		cin.unget();
-		double val;
+		std::string val;
 		cin >> val;
-		if (val > numeric_limits<int>::max())
+		RomanIntegers romanClass;
+		int integerFromRoman{ romanClass.romanToInt(val) };
+		if (integerFromRoman > numeric_limits<int>::max())
 		{
 			error("Overflow Error!");
 		}
-		else if (val < numeric_limits<int>::min())
+		else if (integerFromRoman < numeric_limits<int>::min())
 		{
 			error("Underflow Error!");
 		}
 		// Check if actual value is suitable for ints
-		narrow_cast<int>(val);
-		return Token(number, val);
+		narrow_cast<int>(integerFromRoman);
+		return Token(number, integerFromRoman);
 	}
 	default:
 		// Getting strings from input
@@ -373,7 +376,8 @@ void calculate()
 		double resultStatement{ statement() };
 		if (resultStatement != numeric_limits<double>::min())
 		{
-			cout << result << resultStatement << endl;
+			RomanIntegers resultAsRoman{ static_cast<int>(resultStatement) };
+			cout << result << resultAsRoman.getRomanLiteral() << endl;
 		}
 	}
 	catch (runtime_error& e) {

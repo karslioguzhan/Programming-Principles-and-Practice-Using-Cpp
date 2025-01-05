@@ -128,8 +128,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="07_Exercise.cpp" />
+    <ClCompile Include="RomanIntegers.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="RomanIntegers.h" />
     <ClInclude Include="std_lib_facilities.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

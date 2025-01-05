@@ -18,9 +18,15 @@
     <ClCompile Include="07_Exercise.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="RomanIntegers.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="std_lib_facilities.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RomanIntegers.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
