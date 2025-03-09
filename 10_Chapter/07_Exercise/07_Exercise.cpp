@@ -1,5 +1,5 @@
 // 07_Exercise.cpp : Make a version of the calculator from Chapter 7
-// that aaccepts Roman numerals rather than the usal Arabic ones,
+// that accepts Roman numerals rather than the usual Arabic ones,
 // for example, XXI + CIV == CXXV
 
 
