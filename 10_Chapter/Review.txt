@@ -30,7 +30,7 @@
     - 1: Name the file
     - 2: Open the file for writing
     - 3: Write out desired objects into file
-    - 4: Close the file (typically done implicitly)
+    - 4: Close the file (typically done implicitly) 
 
 9. Name and define the four stream states.
     - good() -> The operations succeeded
