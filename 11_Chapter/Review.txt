@@ -1,0 +1,38 @@
+1. Why is  I/O tricky for a programmer? 
+
+2. What does the <<hex do?
+
+3. What are hexadecimal numbers used for in computer science? Why?
+
+4. Name some of the options you may want to implement for formatting integer outputs.
+
+5. What is a manipulator?
+
+6. What is the prefix for decimal? For octal? For hexadecimal?
+
+7. What is the default output format for floating-point values?
+
+8. What is a field?
+
+9. Explain what setprecision() and setw() do.
+
+10. What is the purpose of file open modes?
+
+11. Which of the following manipulators does not "stick": hex, scientific, setprecision(), showbase, setw?
+
+12. What  is the difference between character I/O and binary I/O?
+
+13. Give an example of when it would probably be beneficial to use a binary file instead of a text file?
+
+14. Give two example where a stringstream can be useful?
+
+15. What is a file position?
+
+16. What happens if you position a file position beyon the end of file?
+
+17. When would you prefer line-oriented input to type-specific input?
+
+18. What does isalnum(c) do?
+
+
+
