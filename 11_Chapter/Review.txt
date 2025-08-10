@@ -38,22 +38,37 @@
         - Prints 1234 when setw(2) is setted, because data will not be cutted
 
 10. What is the purpose of file open modes?
+    - The different file open modes are used for specific purposes
+        - Reading files (ifstream)
+        - Writing files (ostream)
+        - Appending to existing files (app)
+        - Binary mode
 
 11. Which of the following manipulators does not "stick": hex, scientific, setprecision(), showbase, setw?
+    - setw only is applied to the next input/output field
 
 12. What  is the difference between character I/O and binary I/O?
+    - The character I/O is the default and read the stream as characters
+    - Binary I/O reads the the I/O as binary values, but if not necessary don't use it
 
 13. Give an example of when it would probably be beneficial to use a binary file instead of a text file?
+    - When reading image or sound files because the values are just bits and doesn't have a good character reprensentation
 
 14. Give two example where a stringstream can be useful?
+    - stringstream is used when the processing is done separate from the actual I/O
+    - When we want to tailor the I/O for the task
 
 15. What is a file position?
+    - A file position is used when the intention is to write or read a specific place in the file.
 
 16. What happens if you position a file position beyon the end of file?
+    - Is OS dependend and undefined behavoir
 
 17. When would you prefer line-oriented input to type-specific input?
+    - For example, when we want to use the full input without the separation with withspaces
 
 18. What does isalnum(c) do?
+    - Checks if the input Alphanumeric
 
 
 
