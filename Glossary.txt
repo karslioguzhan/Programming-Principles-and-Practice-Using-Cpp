@@ -164,3 +164,21 @@ stream state                            Define the actual state of the stream (f
 structured file                         Is a file that is represented with a certain way. For example comma separated value (CSV)
 terminator                              Is a character that is from the user defined which indicates if a input should be terminated.
 unget()                                 Attempts to decrease the current location in the stream by one character, making the last character extracted from the stream once again available to be extracted by input operations.
+binary                                  Representation of data using base 2 system
+character reprensentation               Representation of data using characters
+decimal                                 Representation of data using base 10 system
+defaultfloat                            std::defaultfloat is the default, which is also known as general format
+file positioning                        A file position is used when the intention is to write or read a specific place in the file.
+fixed                                   Format output in a fixed point notation
+hexadecimal                             Format output in hexadecimal notation
+irregularity                            Irregularity in I/O means when the data/type of the object is not fully is equivalent 
+line-oriented input                     Line-oriented input is when you read a full line instead separated with a whitespace
+manipulator                             A manipulator changes the behavoir of a stream
+nonstandard separator                   A nonstandard separator is used when the data have separators different from whitespace, for example if you want to separate hello, world and dont want to have the "," 
+noshowbase                              Doesn't show the prefix in the output
+octal                                   Format output in octal reprensentation
+output formatting                       Defines how the output should be represented
+regularity                              Irregularity in I/O means when the data/type of the object is fully is equivalent 
+scientific                              Is used for floating point values and represents the data with mantissa and exponent
+setprecision                            Sets the precision for floating point values regarding of the manipulator
+showbase                                Show the prefix in the output
