@@ -4,17 +4,15 @@
 
 #include <algorithm>
 #include <cctype>
-#include <iostream>
-#include <iostream>
 #include <fstream>
+#include <iostream>
 
-static std::string lowerCaseString(std::string const& InputString)
+static std::string lowerCaseString(std::string const &InputString)
 {
-  std::string OutputString;
-  std::transform(InputString.begin(), InputString.end(), OutputString.begin(), ::tolower);
+  std::string OutputString{InputString};
+  std::transform(OutputString.begin(), OutputString.end(), OutputString.begin(), ::tolower);
   return OutputString;
 }
-
 
 int main()
 {
@@ -25,14 +23,14 @@ int main()
     std::cerr << "Error with reading file " << InputFileName << " abort program!\n";
     return 1;
   }
-  std::string OutputFileName{ "outputFile.txt" };
-	std::ofstream OutputFile{ OutputFileName };
+  std::string OutputFileName{"outputFile.txt"};
+  std::ofstream OutputFile{OutputFileName};
 
   std::string TempWord;
 
   while (InputFile >> TempWord)
   {
-    OutputFile << lowerCaseString(TempWord);
+    OutputFile << lowerCaseString(TempWord) << " ";
   }
   InputFile.close();
   OutputFile.close();
