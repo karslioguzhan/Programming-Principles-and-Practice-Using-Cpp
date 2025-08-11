@@ -1,0 +1,186 @@
+# Glossary
+This is the glossary which is written by Oguzhan Karsli, while learning with the book: Programming Principles and Practice Using C++
+
+| Name    | Description |
+| -------- | ------- |
+| //                                      | A Command |
+| <<                                      | Insertion operator which is used for example in cout |
+| C++                                     | The programming language used in this book |
+| comment                                 | Comments are for humans which describes what the intention of the program or code is for example |
+| compiler                                | The Compiler translates the source code to machine code. |
+| compile time error                      | The errors that occur while compiling the source code. For example syntax errors. |
+| cout                                    | A function from iostream which outputs characters |
+| executable                              | The program that is executable for the Operating system you compiled for. |
+| function                                | Is a set of instructions which have an return type, name, parameters and function body |
+| header                                  | Header files are files that we include in our programs to use codes from others or own. |
+| IDE                                     | Integrated Development Environment  |
+| #include                                | This line includes Header files |
+| library                                 | A Library is a collection of function XXX |
+| linker                                  | The linker links machine codes to an executable |
+| main()                                  | The entry point of every C++ Program |
+| object code                             | Is the code that is generated from the compiler, which can be read from a computer |
+| output                                  | Output means like printing characters into your console etc. |
+| program                                 | Is the set of instruction which does an task what it is designed for. |
+| source code                             | Is the code that is written by a human to tell the computer what it should be do. |
+| statement                               | A statement is an complete instruction which is executed. It ends with an semicolon |
+| prompt                                  | A request for example inserting a char or number into command prompt |
+| object                                  | A Object is some memory that holds a value of a given type |
+| variable                                | A variable is a named object with type. |
+| definition                              | Is a declaration that sets aside memory for an object. |
+| Initialization                          | Giving a variable its initial value |
+| Assignment                              | Giving a variable a new value |
+| cin                                     | Is method for character input in the terminal |
+| Concatenation                           | Is the adding of two string or objects together |
+| Conversion                              | Is the changing from one type to an another |
+| Declaration                             | Is a statement that gives a name to an object. |
+| Decrement                               | Subtraction of 1 from the value of an variable --> --num |
+| Increment                               | Addition of 1 to the value of an variable --> ++num |
+| Name                                    | Is the name of an object. |
+| Narrowing                               | Are unsafe conversion where a bigger object is put to an smaller object. double to int |
+| Operation                               | Are the operation which can be used for types. |
+| Operator                                | Are functions that do operation like == |
+| Type                                    | Are the type of an object, which describes how the memory should be interpreted |
+| Type safety                             | A Program is typesafe when objects only used according to the rules of their type. |
+| Value                                   | Is a set of of bits in memory which interpreted according to a type. |
+| Abstraction                             | Hiding details we don't need to use facility (implementation details) behind a convenient and general interface. |
+| begin()                                 | Returns an iterator pointing to the first element in the vector. |
+| Computation                             | The act of producing a result (output) from arguments (input) using a function (computation). |
+| Conditional statement                   | A Conditional statement is for example a if-statement where the program runs a set of particular statements depending if the condition is true. |
+| Divide and conquer                      | We understand by Divide and conquer that we divide complex computations into smaller functions and call them one by one. |
+| else                                    | If the "if" condition is not true than the statements inside the else will be computed. |
+| end()                                   | The C++ function std::vector::end() returns an iterator which points to past-the-end element in the vector container. |
+| expression                              | A expression computes a value from a number of operands. Simple expressions are literal values like 10 or "Norah". A variable represents a expression to like: int length = 20; |
+| for-statement                           | A for-statement iterate n-times till the condition is not longer met. You should use for, when you know how many times you want to iterate |
+| range-for-statement                     | Also called foreach iteration. This statement will run for all elements of an container. |
+| function                                | A function is a named sequence of statements. |
+| if-statement                            | A if-statement where the program runs a set of particular statements depending if the condition is true. |
+| Increment                               | With using a increment we can add 1 to an variable. We know pre and post increments. |
+| Input                                   | Also called an argument which is used for example in functions that is necessary for the computation. |
+| Iteration                               | Also called Repetition and with an iteration we can execute the same statements multiple times. |
+| Loop                                    | In computer programming, a loop is a sequence of instruction s that is continually repeated until a certain condition is reached. |
+| lvalue                                  | An lvalue is for short a value that appears on the left side of an operand and mostly the one value that will be modified.  |
+| member function                         | Also called methods are functions that are functions defined inside a class. A example is the begin() member function for the container vector. |
+| output                                  | A output is the result of an computation which is provided after a program or functions runs.  |
+| push_back()                             | The push_back() member-function puts an new value in the end of the vector. |
+| Repetition                              | Identical to Iteration. |
+| rvalue                                  | The complement to lvalue is rvalue, that is, an expression that identifies something that may not be modified or have its address taken, such as a value returned from a function (&f(x) is an error because f(x) is an rvalue). |
+| selection                               | Under selection we understand the possibility to compute different statements regarding of an state. With selections we allow our program to have multiple paths.     
+| size()                                  | The size member function give the size of an container. |
+| sort()                                  | Is defined inside the header algorithm and sorts a container in ascending order. |               
+| switch-statement                        | A switch-statement is like an if-statement but is used if you have many possible selections. |
+| vector                                  | A vector is a container that is defined in the STL. It can store elements and its half open. You can expand the vector at the end. The advantage of a vector is, that its know its size and does boundary checking when you try to access a variable. |
+| while-statement                         | A while statement is a iteration which performs the same statements until a specified condition is not longer met. |
+| argument error                          | Argument errors are when the arguments that are given to a function/program are false. This can lead to errors which the compiler can catch or worse logic errors which only can be tested. |
+| assertion                               | A statement that states (asserts) an invariant is called an assertion. |
+| catch                                   | The catch statement handle exceptions, like out_of_range etc. |
+| compile-time error                      | Compile time errors occurs when the compiler gets errors like syntax or type errors.  |
+| container                               | A Container is in the standard library a holder objects that stores a collection of other objects(elements). |
+| debugging                               | Debugging is the art of finding and removing all kinds of errors. |
+| error                                   | A error can be understand as an misbehave of your function/program.  |
+| exception                               | Exceptions provide a way to react to exceptional circumstances (like runtime errors) in programs by transferring control to special functions called handlers. |
+| invariant                               | In OOP, an invariant is a set of assertions that must always hold true during the life of an object for the program to be valid. |
+| link-time error                         | Are errors that occurs when the linker tries to link the compiled files. |
+| logic error                             | Are errors that leads to false results but the compiler and linker does not catch it. |
+| post-condition                          | Post conditional checks are checks for testing if a result of an program/function is legit. |
+| pre-condition                           | Pre conditional checks are checking if the arguments that are passed to the program/function are legit. |
+| range error                             | A range errors occurs when you try to get or set to an element of an container which doesn't exist. |
+| requirement                             | Requirements can be understand as the necessary things that should considered when writing a software.  |
+| run-time error                          | Occurs when the program is correctly compiled and linked and the program returns error while running. Like for example you try to divide with zero.  |
+| syntax-error                            | A Syntax error is a compile time error where the compiler checks if the syntax of c++ is respected. For example missing semicolon. |
+| testing                                 | The testing is performed after you build your program with a set of selected inputs and their outputs. |
+| throw                                   | Is an expression which signals an erroneous condition and executes an error handler. |
+| type error                              | A Type error is a compile time error where the type mismatches. For example you try to insert a string to an function which requires an int. |
+| code layout                             | Defines how the source code is designed and is split into logical units |
+| error handling                          | Defines how errors get caught and what to do after a error occurs. Likewise a char is inserted instead of required integer   |
+| feature creep                           | Defines the activity to add more and more features into a project that can be dangerous for finishing the project with the resources that are available |
+| maintenance                             | Is the modification of code after finishing the project. For example this can be necessary if a security leak is found or changes in the compiler version. |
+| recovery                                | Allows to retain code if incorrectly changes occurs |
+| revision history                        | Show the changes that ware committed (usage of a source control management software like git is recommended) |
+| scaffolding                             | Is how the project is designed, but it can mean the techniques like code generation and project generation too. |
+| symbolic constant                       | Symbolic constants are nothing more than a label or name that is used to represent some fixed value that never changes throughout the course of a program.  |
+| activation record                       | An activation record is a contiguous block of storage that manages information required by a single execution of a procedure. |
+| argument                                | Sometimes also called function parameter. Are the inputs for an function. |
+| argument passing                        | A argument can be passed via copy or reference.  |
+| call stack                              | In programming, a call stack is an ordered list of the functions (or stack frames) a program has to execute before it returns a result. |
+| class scope                             | Defines a area inside a scope. |
+| const                                   | Constant requires a initialization and tells the compiler to prevent the programmer from modifying it |
+| constexpr                               | Defines that for example the variable is calculated in compile time. |
+| extern                                  | This keyword is used to state that something is only a declaration and not a definition. (rarely useful) |
+| forward declaration                     | In computer programming, a forward declaration is a declaration of an identifier for which the programmer has not yet given a complete definition. |
+| function definition                     | Are declarations which also specifies the entity fully. |
+| global scope                            | The area of text outside any other scope |
+| initializer                             | An initializer specifies an initial value to a data object and is optional in a data declaration. |
+| local scope                             | Space between {...} or in a function argument list |
+| namespace                               | Is a mechanism to grouping declarations. |
+| namespace scope                         | A named scope nested in the global scope or in another namespace. |
+| parameter                               | Also called argument. Look at argument for description. |
+| pass-by-const-reference                 | Passes a variable as a reference, which cannot be modified. |
+| pass-by-reference                       | Passes a variable as a reference. |
+| pass-by-value                           | Passes a variable through making a copy. Modifying this variable doesn't change the original value. |
+| recursion                               | Recursion occurs when the definition of a concept or process depends on a simpler or previous version of itself. For example Fibonacci |
+| return                                  | Is used to return a value from a function. |
+| return value                            | The value which is returned from the function. |
+| scope                                   | A region of program text |
+| statement scope                         | A region inside an statement like in a for-statement. |
+| technicalities                          | Can be understood as the vocabulary and grammar for an language. |
+| undeclared identifier                   | Typically undeclared identifier means it is searching for a variable that has not been defined. |
+| using declaration                       | Using-declarations introduce a member of another namespace into the current namespace or block scope. |
+| using directive                         | The using directive allows you to use types defined in a namespace without specifying the fully qualified namespace of that type. For example. using namespace std; |
+| built-in types                          | The types C++ language is provide. For example char, int and double |
+| user-defined types                      | Types that are for example in the ISO standard C++ implementation like string or vector or from the user self created types for a specific task. |
+| class                                   | A user defined type which have members like data & function members |
+| constructor                             | The function which creates an object from the class. This can be the default constructor or a user defined one. |
+| destructor                              | The function which is executed when a object should be deleted. For example to free occupied memory from the heap. |
+| enum                                    | A less stricter version of the enum classes. The difference is that plain enums implicitly "exporting" their enumerators to the scope of the enumeration. |
+| enumeration                             | Is a simple user defined type which specifying a set of values (its enumerators) as a symbolic constant |
+| enumerator                              | The values inside a enumerators |
+| helper function                         | Also called convenience or auxiliary functions. A helper function is a function (usually supplied by the writer of a class) that does not need direct access to the representation of the class, yet is seen as part of the useful interface to the class.  |
+| implementation                          | Implementation can be understood specific to a task. For functions: This refers to the actual code that defines how a function behaves. For Classes: This involves defining the member functions of a class, often in a separate .cpp file. |
+| in-class initializer                    | An in-class initializer in C++ is a way to provide a default value for a non-static class member directly in the class definition. |
+| inlining                                | Inlining in C++ is a compiler optimization technique where the compiler replaces a function call with the actual body of the function. |
+| interface                               | The interface are the accessible parts of a class for performing actions like getting a value. The interface should be separated from the implementation. |
+| representation                          | The type "knows" how to represent the data needed in a object. |
+| struct                                  | Technically struct and classes are the same. But the struct have the default accessibility as public and the class default is private. |
+| structure                               | A structure in C++ is a user-defined data type that allows you to group related data elements of different types under a single name. |
+| valid state                             | With the right constructor it is possible to nearly guarantee that state/type is correct. For example the constructor checks when we have a class named Date if the month inserted is greater than 13. |
+| bad()                                   | Returns true if the badbit error state flag is set for the stream. |
+| buffer                                  | Buffer is a generic term that refers to a block of memory that serves as a temporary placeholder. |
+| clear()                                 | Sets a new value for the stream's internal error state flags. |
+| close()                                 | Closes the file for reading/writing. |
+| device driver                           | Is a computer program that operates or controls a particular type of device that is attached to a computer |
+| eof()                                   | This flag is set by all standard input operations when the End-of-File is reached in the sequence associated with the stream. |
+| fail()                                  | The class std::ios_base::failure defines an exception object that is thrown on failure by the functions in the Input/Output library. |
+| good()                                  | Returns true if the most recent I/O operation on the stream completed successfully.  |
+| file                                    | At the most basic form a sequence of bytes. |
+| ifstream                                | The class template ifstream implements high-level input operations on file-based streams. Get the data from the input file. |
+| input device                            | A device to input data. For example keyboard. |
+| input operator                          | The input/extraction  operator >> takes the data from the stream |
+| iostream                                | Is the library for controlling standard input and output streams. |
+| istream                                 | The class template istream provides support for high level input operations on character streams. |
+| ofstream                                | The class template basic_ofstream implements high-level output operations on file based streams. |
+| open()                                  | Opens a file and associates it with the stream |
+| ostream                                 | The class template basic_ostream provides support for high level output operations on character streams. |
+| output device                           | Are devices that output data, for example screens. |
+| output operator                         | The input/insertion  operator << inserts the data to the output. |
+| stream state                            | Define the actual state of the stream (for example good or eof) |
+| structured file                         | Is a file that is represented with a certain way. For example comma separated value (CSV) |
+| terminator                              | Is a character that is from the user defined which indicates if a input should be terminated. |
+| unget()                                 | Attempts to decrease the current location in the stream by one character, making the last character extracted from the stream once again available to be extracted by input operations. |
+| binary                                  | Representation of data using base 2 system |
+| character reprensentation               | Representation of data using characters |
+| decimal                                 | Representation of data using base 10 system |
+| defaultfloat                            | std::defaultfloat is the default, which is also known as general format |
+| file positioning                        | A file position is used when the intention is to write or read a specific place in the file. |
+| fixed                                   | Format output in a fixed point notation |
+| hexadecimal                             | Format output in hexadecimal notation |
+| irregularity                            | Irregularity in I/O means when the data/type of the object is not fully is equivalent  |
+| line-oriented input                     | Line-oriented input is when you read a full line instead separated with a whitespace |
+| manipulator                             | A manipulator changes the behavoir of a stream |
+| nonstandard separator                   | A nonstandard separator is used when the data have separators different from whitespace, for example if you want to separate hello, world and dont want to have the ","  |
+| noshowbase                              | Doesn't show the prefix in the output |
+| octal                                   | Format output in octal reprensentation |
+| output formatting                       | Defines how the output should be represented |
+| regularity                              | Irregularity in I/O means when the data/type of the object is fully is equivalent  |
+| scientific                              | Is used for floating point values and represents the data with mantissa and exponent |
+| setprecision                            | Sets the precision for floating point values regarding of the manipulator |
+| showbase                                | Show the prefix in the output |
