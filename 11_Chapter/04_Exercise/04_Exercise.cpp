@@ -7,9 +7,24 @@
 //    0123    octal         converts to   83    decimal
 //    65      decimal       converts to   65    decimal
 
+#include <cctype>
 #include <iostream>
+#include <sstream>
 #include <string>
+#include <utility>
 #include <vector>
+
+bool static isDecimal(std::string const &InputValue)
+{
+  for (char ActualChar : InputValue)
+  {
+    if (!std::isdigit(ActualChar))
+    {
+      return false;
+    }
+  }
+  return true;
+}
 
 void static promptInput()
 {
@@ -17,31 +32,70 @@ void static promptInput()
                "for decimal:";
 }
 
-bool static validateInput(std::string const & InputString)
+enum class TypeOfInt : int
 {
-  if (InputString.find("0x") != std::string::npos) 
-  {
-    return true;   
-  }
-  else if (InputString.at(0) == "0") {
-  
-  }
-else if (condition) {
+  decimal,
+  hexadecimal,
+  octal
+};
 
-}
-  return false;
+std::pair<bool, std::pair<TypeOfInt, int>> static validateAndConvertInput(
+    std::string const &InputString)
+{
+  // Checking for decimal values
+  bool CheckIfDecimal{isDecimal(InputString)};
+  if (CheckIfDecimal)
+  {
+    return std::pair<bool, std::pair<TypeOfInt, int>>{true,
+                                                      {TypeOfInt::decimal, std::stoi(InputString)}};
+  }
+
+  // Checking for hexadecimal  values
+  if (InputString.substr(0, 2).compare("0x") == 0)
+  {
+    bool CheckIfDecimal{isDecimal(InputString.substr(2, InputString.length() - 1))};
+    if (CheckIfDecimal)
+    {
+      int TempValue{};
+      std::stringstream TempStringStream;
+      TempStringStream << std::hex << InputString;
+      TempStringStream >> TempValue;
+      return std::pair<bool, std::pair<TypeOfInt, int>>{true, {TypeOfInt::hexadecimal, TempValue}};
+    }
+  }
+
+  if (InputString.substr(0, 1).compare("0") == 0)
+  {
+    bool CheckIfDecimal{isDecimal(InputString.substr(2, InputString.length() - 1))};
+    if (CheckIfDecimal)
+    {
+      int TempValue{};
+      std::stringstream TempStringStream;
+      TempStringStream << std::hex << InputString;
+      TempStringStream >> TempValue;
+      return std::pair<bool, std::pair<TypeOfInt, int>>{true, {TypeOfInt::hexadecimal, TempValue}};
+    }
+  }
+
+
+
+  return std::pair<bool, std::pair<TypeOfInt, int>>{true,
+                                                    {TypeOfInt::decimal, std::stoi(InputString)}};
 }
 
 int main()
 {
   std::string InputValue{};
-  std::vector<int> CollectedIntegers;
+  std::vector<std::pair<bool, std::pair<TypeOfInt, int>>> CollectedIntegers;
   promptInput();
   while (std::cin >> InputValue)
   {
     promptInput();
-    int test{std::stoi(InputValue)};
-    std::cout << "Hallo";
+    auto TempValue{validateAndConvertInput(InputValue)};
+    if (TempValue.first)
+    {
+      CollectedIntegers.push_back(TempValue);
+    }
   }
 
   return 0;
