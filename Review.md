@@ -414,3 +414,337 @@
 22. How does testing differ from debugging?
     * The testing is performed after you build your program with a set of selected inputs and their outputs.
     * This so called testcases tests the program for legit responses
+
+# Chapter 6: Writing a program
+1. What do we mean by "Programming is understanding"?
+    * The statement "Programming is understating" tells us, that solving a problem without understand it properly could lead to false results and not useful programs
+
+2. The chapter details the creation of a calculator program. Write a short analysis of the calculator should be able to do.
+    * The program should do basic arithmetic like addition, subtraction, multiplication and division. 
+    * It should respect braces and the rule which parts of an equation should be calculated first. etc. * over + 
+
+3. How do yoe break a problem up into smaller manageable parts?
+    * Look for tools and libraries that do specific task for your issue. It's not a good idea to reinvent a wheel for each program your write.
+    * Look for parts of solution that can be separately described. For example:
+        * User interaction
+        * Calculation
+        * Parsing
+
+4. Why is creating a small, limited version of a program a good idea?
+    * Creating a small prototype is useful because of:
+        * To make problems of our understating, tools and ideas visible
+        * To show definition lack in the problem description
+        * To test small parts before having to test everything at once with is dependencies
+
+5. Why is feature creep a bad idea?
+    * Because we should consider the following trade of
+        * Can we complete the project?
+        * Do we have all skills, time and skill for more advanced solutions?
+        * Should we consider problems we don't want to solve?
+
+6. What are the three main phases of software development?
+    * Analysis
+        * Understanding the problem and writing down a set of requirements
+    * Design
+        * Creating a overall structure of the program to show which parts does which job and their interactions
+    * Implementation
+        * Writing, debugging and testing the code
+
+7. What is a "use case"?
+    * How a system/program can be used to achieve a specific goal or task.
+
+8. What is the purpose of testing?
+    * The purpose of testing is to test if the program behave as we intended 
+    * Are the results as we expected
+    * Do we consider all or most common "wrong" inputs and interactions
+    * Is the program fast enough for its purpose
+
+9. According to the outline in the chapter, describe the difference between a Term, an Expression, a Number and Primary.
+    * Expression
+        * Combination of operators, names and values
+        * Is the "top rule" and must be Term
+    * Term
+        * A Term must be Primary or a term
+        * It decides which action should be performed or is the value of the action
+    * Primary
+        * A primary is a number or an expression and will be used for the calculation
+    * Number
+        * Is the representing of the data 
+
+10. In the chapter, an input was broken down into its component, Terms, Expressions, Primarys, and Numbers. Do this for (17+4)/(5-1).
+    * ("(") = "(" Expression --> Primary --> Term --> Expression
+        * (17) = Number --> Primary --> Term --> Expression
+            * (+) = Expression
+        * (4) = Number --> Primary --> Term --> Expression
+    * (")") = ")" Expression --> Primary --> Term --> Expression
+    * (/)
+    * ("(") = "(" Expression --> Primary --> Term --> Expression
+        * (5) = Number --> Primary --> Term --> Expression
+            * (-) = Expression
+        * (1) = Number --> Primary --> Term --> Expression
+    * (")")  = ")" Expression --> Primary --> Term --> Expression
+
+11. Why does the program not have a function called number()?
+    * Because depending on the "input" an expression can be number and with this attempt it is easier to use grammar rules.
+
+12. What is a token?
+    * A token is a sequence of characters that represents something we consider a unit such as a number or operators
+
+13. What is a grammar? A grammar rule?
+    * A grammar defines the syntax of our input.
+    * A grammar rules defines how our program interpret this syntax
+
+14. What is a class? What do we use classes for?
+    * A class can be considered like an user defined type
+    * A class have members which representing values and methods which perform actions 
+    * We use classes for splitting our problems into smaller parts and every "class" deals with its specials responsibility
+
+15. How can we provide a default value for a member of a class?
+    * We can initialize in the member field. 
+    * For example int memberA{1};
+
+16. In the expression function, why is the default for the switch-statement to "put back" the token?
+    * Because if don't putback the token we "eat" values and this can lead to false results
+
+17. What is "look-ahead"?
+    * With look ahead we mean that a rule which is superior should be considered first.
+    * For example 2+1*3 
+        * 1*3 should be calculated first but the computer reads from left to right
+        * Because of that should look ahead if a superior rule is available before performing 2+1
+
+18. What does putback() do and why is it useful?
+    * It copies the token and sets the buffer boolean to true.
+    * It is useful because we know that we have to consider following terms
+
+19. Why the remainder (modulus) operation, %, difficult to implement in the term()?
+    * The remainder operation is difficult because its only suits to integers and we deal with floating point numbers.
+
+20. What do we use the two data members of the Token class for?
+    * With the full and buffer we can show if a token is in the buffer and which value it have
+
+21. Why do we (sometimes) split a class's members into private and public members.
+    * Because of we want to encapsulate information for the caller of the method that should not be modified
+    * public members are meant to be accessed and private are for the class to function properly
+
+22. What happens in the Token_stream class when there is a token in buffer and the get() function is called?
+    * Firstly it check if there is a token inside the buffer. If its true than the the token will be removed from the buffer and the indicator (full) will be set to false.
+
+23. Why were the ';' and 'q' characters added to the switch-statement in the get() function of the Token_stream class?
+    * The semicolon triggers the printing of the result and shows the program that the user finished its command
+    * The character q shows the program that the user wants to terminate this session
+
+24. When should we start testing our program?
+    * The earlier you test you should prevent big issues. So after a small prototype testing should be reasonable.
+
+25. What is a "user-defined type"? Why would we want one?
+    * A user defined type can be class or a struct that representing a type specially designed for our problem.
+    * Using a user defined type is useful because we can provide others and us a valid type
+
+26. What is the interface to a C++ "user-defined type"?
+    * The interface are members or functions (methods) which can be accessed from outside of an user-defined type
+
+27. Why do we want to rely on libraries of code?
+    * Because it is a good idea to use tested, optimized code that are in libraries
+    * We benefit from preventing reinventing frequently performed actions and our codebase will be smaller and easier to grasp
+
+# Chapter  7:  Completing a program
+1. What is the purpose of working on the program after the first version works? Give a list of reasons.
+    * The first version is mostly full of bugs and logical errors
+    * We want to add new features
+    * We want to improve performanceS
+
+2. Why does 1+2; q typed into the calculator not quit after it receives an error?
+    * Cannot reconstruct the error with my compiler
+
+3. Why did we choose to make a constant character called number?
+    * This constant representing all numeric values and is inserted into Tokens kind member variable. 
+
+4. We split main() into two separate functions. What does the new function do and why did we split main()?
+    * We split the main because the first section deals with correct running
+    * The second section is for error handling (divided into know and unknown errors)
+
+5. Why do we split code into multiple functions? State principles.
+    * We mostly split code for better readability and easier debugging
+    * We split "calculations" into logical functions that does a specific job 
+
+6. What is the purpose of commenting and how should it be done?
+    * The purpose of commenting is to make comprehending easier for a different person 
+    * The purpose is not write the code into human language, because mostly person with understanding of this language reads the code
+
+7. What does narrow_cast do?
+    * narrow_cast ensures that no information is lost while casting
+
+8. What is the use of symbolic constants?
+    * Symbolic constants are values that represent a type with a arbitrary selected value. For example '8' is in the calculator program 
+    * the representation of numeric values
+
+9. Why do we care about code layout?
+    * Better readability
+    * Bugs can better hide in "ugly" code
+
+10. How do we handle % (remainder) of floating-point numbers?
+    * Checking with fmod(d,1) != 0
+
+11. What does is_declared() do and how does it work?
+    * Checks if the declaration is done before
+    * Preventing double declaration
+
+12. The input representation for let is more than one character. How is it accepted as a single token in the modified code?
+    * We check in the default case in the switch if the concatenated string s is equal to let
+    * If this is true than we create a token with a single letter 
+
+13. What are the rules for what names can and cannot be in the calculator program?
+    * The names should be misleading like pi is unequal to the mathematical pi
+    * Non asci letters are not supported
+
+14. Why is it a good idea to build a program incrementally?
+    * It provides the possibility to test logical units after moving on to the next logical
+    * Easier to catch errors 
+
+15. When do you start to test?
+    * As soon you can compile your code
+
+16. When do you retest?
+    * When project is finished or a change is made
+
+17. How do you decide what should be a separate function?
+    * A function should do only one job 
+    * A function must be logically divided from other tasks
+
+18. How do you choose names for variables and functions? List possible reasons.
+    * The name of a variable should represent its function 'i' is a bad example because no one what it is
+    * Better alternative for iterations are for example 'numIteration' or 'numElement' if iterating through a vector
+
+19. Why do you add comments?
+    * To grasp the idea of this section
+
+20. What should be in comments and what should not?
+    * Rewriting the code in "human" language
+
+21. When do we consider a program finished?
+    * When it does the specified job good enough with the resources we want to invest
+
+# Chapter 8: Technicalities: Functions, etc.
+1. What is the difference between a declaration and a definition?
+    * A declaration is a statement that introduce a name into a scope with its type
+    * A definition specifies exactly what a name refers to and sets memory aside for that variable
+        * Multiple declarations are possible but not multiple definitions
+
+2. How do we syntactically distinguish between a function declaration and a function definition?
+    * A function declaration supplies the type and can be understood as an interface to describe the function
+    * A function definition supplies the function body and what statements need to be executed
+
+3. How do we syntactically distinguish between a variable declaration and a variable definition?
+    * Declaration supplies the type
+    * Definition supplies the object (the memory)
+
+4. Why can't you use the functions in the calculator program from Chapter 6 without declaring them first?
+    * Because we need to forward declare the function to inform the compiler that this functions will be used but the definition is somewhere else
+    * For large projects this is necessary to avoid time consuming designing which object to define first
+
+5. Is int a; a definition or just a declaration?
+    * This is only a declaration, because its only defines its type without providing a value
+
+6. Why is it a good idea to initialize variables as they are declared?
+    * Not all types will initialize/define variable when declared like strings or vectors
+    * Because of this the value of the variable can be everything 
+
+7. What can a function declaration consist of?
+    * Pattern: "return type" "function name"("type of" arguments/parameter); (Semicolon is necessary if only declaring)
+    * For example double squareRoot(double input)
+
+8. What good does indentation do?
+    * Better readability
+    * Function bodies and scopes are easier to track
+
+9. What are header files used for?
+    * The header files are collections of of declarations which are included into source files if needed
+
+10. What is the scope of a declaration?
+    * From the point the declaration until the end of the scope (local/global etc.)
+
+11. What kinds of scope are there? Give an example of each.
+    * Global scope
+        * The area of text outside any other scopes
+        * For example  
+            * int i{}; --> global scope
+            * int main(){}
+    * Namespace scope
+        * namespace example{int i{};} --> i is inside the namespace scope
+    * Class scope
+        * Class C{ int i{};}
+            * i is in the class scope (member variable)
+    * Statement scope
+        * For example
+            * for (int numElement; numElement<10; ++numElement) {}; --> numElement is a statement scope
+
+12. What is the difference between a class scope and local scope?
+    * The variables inside the class scope lives until the class is destroyed
+    * The local scope variable are deleted as soon it reach the end 
+
+13. Why should a programmer minimize the number of global variables?
+    * The use of global variables should be as low as possible 
+    * Because large programs have a lots of variable and if there are to many global variables it is difficult to guarantee if the global variable is still valid
+    * It is possible to have collisions 
+
+14. What is the difference between pass-by-value and pass-by-reference?
+    * Pass-by-Value copies the object and the rvalue is passed
+    * Pass-by-reference doesn't create a copy and gives the address of the variable (rvalue)
+
+15. What is the difference between pass-by-reference and pass-by-const-reference?
+    *  Pass-by-const-reference also providing the rvalue but guarantees that the value cannot be changed
+
+16. What is a swap()?
+    * A swap swapping two values. 
+    * For example A = 10; B = 20; swap(A,B) --> A = 20; B = 10;
+
+17. Would you ever define a function with a vector<double>-by-value parameter?
+    * Probably not if i am not absolute sure that the vector will be very small
+
+18. Give an example of undefined order of evaluation. Why can undefined order of evaluation be a problem?
+    * Example:  int x = ++i + ++i;
+    * This is a problem because every compiler can threat this different 
+
+19. What do x&&y and x||y, respectively, mean?
+    * Both are comparison operators first is "and" and the second is "or"
+
+20. Which of the following is standard-conforming C++: functions within functions, functions within classes, classes within classes, classes within functions?
+    * functions within functions
+        * Not legal in C++
+    * Function within classes 
+        * Common and useful
+    * Classes within classes
+        * Useful but only in complex problems 
+    * Classes within functions
+        * Valid but not best practice --> Should be avoided
+
+21. What goes into an activation record?
+    * Locals of the callee
+    * Return address of the caller
+    * Parameters of the callee
+    * Previous stack pointer
+
+22. What is a call stack and why do we need one?
+    * The call stack is a data structure which grows and shrinks with "Last in, first out"
+    * Data structure that stores information about the active subroutines of a computer program
+
+23. What is the purpose of a namespace?
+    * To provide a tool for organizing functions, data, and types into a type
+    * To prevent collisions for example of two identical function names
+
+24. How does a namespace differ from a class?
+    * Classes and structs define types. You can create an object of a type. 
+    * Namespaces simply declare a scope inside which other types, functions, objects, or namespaces can exist.
+
+25. What is a using declaration?
+    * Introduces a name that is defined elsewhere into the declarative region where this using-declaration appears.
+
+26. Why should you avoid using directives in a header?
+    * The using declaration can call a unwanted function or provide a false variable.
+    * For example you wanted to call B::func() but you have a using A::func; before you call just func()
+        * This using call the A::func instead the wanted B::func
+
+27. What is namespace std?
+    * The std namespace is the namespace for the standard C++ library
+        * This standard library is a collection of classes and function, which are part of the C++ ISO standard
+
