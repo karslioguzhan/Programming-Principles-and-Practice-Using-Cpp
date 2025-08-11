@@ -42,3 +42,85 @@
     * Like every skill based activity programming need practice to refine and learn the skill. 
     * It is necessary to learn from errors, which only possible if someone codes for its own.
 
+# Chapter 3: Objects, Types, and Values
+1. What is meant by the term prompt?
+    * A request for example inserting a char or number into command prompt
+
+2. Which operator do you use to read into a variable?
+    * ">>"
+
+3. If you want the user to input an integer value into your program for a variable named number, what are two lines of code you could write to ask the user to do it and to input the value into your program?
+    * std::cout << "Enter a interger: "
+    * std::cin >> number;
+
+4. What is \n called and what purpose does it serve?
+    * This is a linebreak in C++ Strings.
+
+5. What terminates input into a string?
+    * A white space
+
+6. What terminates input into an integer?
+    * A character which is not an digit.
+
+7. How would you write
+    * std::cout << "Hello, " << first_name << "!\n";
+
+8. What is a object?
+    * A Object is some memory that holds a value of a given type.
+
+9. What is a literal?
+     * Notation for values of bool, character types, integer types, or floating-point type. Literals represent values of various types. For example, the literal 12 represents the integer value “twelve”, “Morning” represents the character string value Morning, and true represents the Boolean value true.
+
+10. What kind of of literals are there?
+    * Decimal
+    * Octac where the digits starts with 0 example: 012
+    * Hexadecimal where the digits starts with 0x/0X example: 0x12
+    * Binary where the bits starts with 0b/0B example 0b0011
+
+11. What is a variable?
+    * A variable is a named object with type.
+
+12. What are typical sizes for a char, an int, and a double?
+    *  char = 1 Byte
+    *  int = 4 Byte
+    *  double = 8 Byte
+
+13. What measures do we use for the size of small entities in memory, such as ints and strings?
+    * Byte
+
+14. What is the difference between = and ==?
+    * The = is the assignment operator which assings the righthand side with the variable on the left (lefthand side).
+    * == is a equality operator which checks if both sides are identical
+
+15. What is a definition?
+    * Is a declartion that sets aside memory for an object. A Definition is when a variable name is declared and a value is initialized. 
+
+16. What is an initialization and how does it differ from an assignment?
+    *  A initialization creates an object with an value in memory. A assignment assigns a value to a variable. 
+    *  Initialization (giving a variable its initial value)
+    *  Assignment (giving a variable a new value)
+
+17. What is string concatenation and how do you make it work in C++?
+    * A string concatenation is adding two strings together. For C++ strings you can use the + operator.
+
+18. Which of the following are legal names in C++? If a name is not legal, why not?
+    *  2_For_1_special --> A variable name cannot start with a number
+    *  latest things --> whitespaces are illegal for variable names
+    *  the_$12_method --> non ASCII characters are illegal
+    *  correct? --> non ASCII characters are illegal
+
+19. Give five examples of legal names that you shouldn’t use because they are likely to cause confusion.
+    * Giving to short variable names like x. You shouldn’t also not use string, int etc. because it can be confused with the standard libary.
+
+20. What are some good rules for choosing name?
+    * Your variable name should be understandable without to become too long. Also stick with your nameing style. Do not use All Caps because it is used for makros.
+
+21. What is type safety and why is it important?
+    * Every object is given a type when it is defined. A program — or a part of a program — is type-safe when objects are used only according to the rules for their type. Unfortunately, there are ways of doing operations that are not type-safe. For example, using a variable before it has been initialized is not considered type-safe.
+
+22. Why can conversion from double to int be a bad thing?
+    * Because double contains more information than int a conversion can loss data. For example: 12.1 --> 12
+
+23. Define a rule to help decide if a conversion from one type to another is safe or unsafe.
+    *  A conversion should be unsafe when the target type have less memory than the source.
+
