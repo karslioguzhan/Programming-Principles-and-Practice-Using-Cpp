@@ -748,3 +748,193 @@
     * The std namespace is the namespace for the standard C++ library
         * This standard library is a collection of classes and function, which are part of the C++ ISO standard
 
+# Chapter 9: Technicalities: Classes, etc.
+1. What are the two parts of a class, as described in the chapter?
+    * Data members -> Attribute
+    * Function members -> methods
+
+2. What is the difference between the interface and the implementation in a class?
+    * Interface is the part where the user access directly (Public)
+    * Implementation is the part that is called indirectly (Private)
+
+3. What are the limitations and problems of the original Date struct that is created in the chapter?
+    * Direct access to the member variable is not best practice
+    * No checks for valid inputs for example negative years etc.
+    * No constructor was used at first, which bloats up the declaration of a legit date
+
+4. Why is a constructor used for the Date type instead of an init_day() function?
+    * Because with a constructor the possibility to create an invalid date is minimized
+    * It's convenient because other variables are defined alike
+
+5. What is an invariant? Give examples.
+    * A invariant is a valid value of a given type. 
+    * Example: A invariant Date can be a valid date in the past, present or future
+
+6. When should functions be put in the class definition, and when should they be defined outside the class? Why?
+    * Function which are used inside a class for example when modifying attributes should be defined inside a class
+    * Function which are no directly related to the class should be implemented outside the class
+    * Because with this practice we can use general purpose function for other classes and encapsulate class specific operations
+
+7. When should operator overloading be used in a program? Give a list of operators that you might want to overload (each with a reason).
+    * We overloading operators when we want to provide a conventional notation for the types we create. 
+    * For example when we want to print something with std::cout we overload << to define how the user defined type is to printed
+    * List of possible overloading
+        * ++ Increment -> To define how a user defined type is to incremented
+        * -- Decrement -> To define how a user defined type is to decremented
+        * << Extraction -> For example how to print user defined types
+        * <, >, == -> To compare two user defined types
+
+8. Why should the public interface to a class be as small as possible?
+    * Because we provide only functions that are needed (feature creep)
+    * Easier to debug because of lesser function to be checked
+
+9. What does adding const to a member function do?
+    * A const member function guarantees that a function doesn't change member variables
+    * For example getter methods should be const
+
+10. Why are "helper functions" best placed outside the class definition?
+    * Because helper functions could be used for different user defined types
+    * For adding new functionality which isn't needed in a class
+
+# Chapter 10: Input and Output Streams
+1. When dealing with input and output, how is the variety of devices dealt with in most modern computers?
+    * The I/O Library provide a layer of abstraction of I/O
+    * Because of the library mostly a device specific in or output is not needed 
+
+2. What, fundamentally, does an istream do?
+    * istream deals with streams of input
+
+3. What, fundamentally, does an ostream do?
+    * ostream deals with streams of output
+
+4. What, fundamentally, is a file?
+    * At the most basic level is a file simply a sequence of bytes numbered 0 upwards
+
+5. What is a file format?
+    * A file format describes the rules that determine what the byte stream of mean.
+
+6. Name four different types of devices that can require I/O for a program.
+    * Stream of data items (files, networks, display devices)
+    * Interaction with a keyboard
+    * Interaction through a graphical interface
+    * Interaction with a mouse
+
+7. What are the four steps for reading a file?
+    * 1: Know the name of the file
+    * 2: Open the file for reading
+    * 3: Read in the characters of that file
+    * 4: Close the file (typically done implicitly)
+
+8. What are the four steps for writing a file?
+    * 1: Name the file
+    * 2: Open the file for writing
+    * 3: Write out desired objects into file
+    * 4: Close the file (typically done implicitly) 
+
+9. Name and define the four stream states.
+    * good() -> The operations succeeded
+    * eof() -> We hit end of input (end of file)
+    * fail() -> Something unexpected happened (for example: wanted a digit get an char)
+    * bad() -> Something unexpected and serious happened (for example: disk read error)
+
+10. Discuss how the following input problems can be resolved:
+    * The user typing an out-of-range value
+        * We can check if stream is corrupted with cin.bad() and can throw an error
+    * Getting no value (end of file)
+        * We check if std::cin.eof() is true
+    * The user typing something of the wrong type
+        * We check for fail and recover std::cin with clear()
+
+11. In what way is input usually harder than output?
+    * Because our logic and how the data is outputted is in the hands of the programmer
+
+12. In what way is output usually harder than input?
+    * When we deals with special devices
+    * When the type we want to output is complex
+
+13. Why do we (often) want to separate input and output from computation?
+    * Because for correct computation the in/output must be done correct
+    * If we do computation in the same time or scope we can get false results
+
+14. What are the two most common uses of the istream member function clear()?
+    * To set the state to good()
+    * To continue input after an fail()
+
+15. What are the usual function declarations for << and >> for a user-defined type X?
+    * std::istream& operator>>(std::istream& is, Class& XYZ)
+    * std::ostream& operator<<(std::istream& is, const Class& XYZ)
+
+# Chapter 11: Customizing Input and Output
+1. Why is  I/O tricky for a programmer? 
+    * I/O is tricky because there are many different data types and the interpretation can vary alot.
+    * For example 1234 can be understood as ints 1, 2, 3,4; as chars or as the string "1234"
+    * Because of that it is not always trivial what the person or data meant with given out or input
+
+2. What does the <<hex do?
+    * This is a I/O manipulator which changes the output of the I/O stream
+    * For example the integer 255 would be displayed as FF in hex.
+
+3. What are hexadecimal numbers used for in computer science? Why?
+    * Because two characters in hex like FF are exactly one  byte (8 bit) and the readablity of a hex stream is better
+
+4. Name some of the options you may want to implement for formatting integer outputs.
+    * I probably will use showbase to easier determine which reprensentation the int is
+
+5. What is a manipulator?
+    * A manipulator changes the behavoir of a stream
+
+6. What is the prefix for decimal? For octal? For hexadecimal?
+    * decimal -> std::dec
+    * octal -> std::oct
+    * hexadecimal -> std::hex
+
+7. What is the default output format for floating-point values?
+    * std::defaultfloat is the default, which is also known as general format
+
+8. What is a field?
+    * Fiels specify how many characters an integer or string will occupy
+    * For that we use the function "set field width" -> setw()
+
+9. Explain what setprecision() and setw() do.
+    * setprecision() is a manipulator for floating point, regarding of reprensentation 
+        * defaultfloat -> precision is the total number of digits
+        * scientific -> precision is the number of digits after the decimal point
+        * fixed -> precision is the number of digits after the decimal point
+    * setw() specify how many characters a output will have 
+        * Prints 1234 when setw(2) is setted, because data will not be cutted
+
+10. What is the purpose of file open modes?
+    * The different file open modes are used for specific purposes
+        * Reading files (ifstream)
+        * Writing files (ostream)
+        * Appending to existing files (app)
+        * Binary mode
+
+11. Which of the following manipulators does not "stick": hex, scientific, setprecision(), showbase, setw?
+    * setw only is applied to the next input/output field
+
+12. What  is the difference between character I/O and binary I/O?
+    * The character I/O is the default and read the stream as characters
+    * Binary I/O reads the the I/O as binary values, but if not necessary don't use it
+
+13. Give an example of when it would probably be beneficial to use a binary file instead of a text file?
+    * When reading image or sound files because the values are just bits and doesn't have a good character reprensentation
+
+14. Give two example where a stringstream can be useful?
+    * stringstream is used when the processing is done separate from the actual I/O
+    * When we want to tailor the I/O for the task
+
+15. What is a file position?
+    * A file position is used when the intention is to write or read a specific place in the file.
+
+16. What happens if you position a file position beyon the end of file?
+    * Is OS dependend and undefined behavoir
+
+17. When would you prefer line-oriented input to type-specific input?
+    * For example, when we want to use the full input without the separation with withspaces
+
+18. What does isalnum(c) do?
+    * Checks if the input Alphanumeric
+
+
+
