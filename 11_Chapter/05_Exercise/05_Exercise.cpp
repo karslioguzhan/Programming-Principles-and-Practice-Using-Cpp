@@ -5,7 +5,7 @@
 //  alphanumeric).
 
 #include <cctype>
-#include <iomanip>
+#include <ios>
 #include <iostream>
 #include <map>
 #include <ostream>
@@ -33,6 +33,7 @@ public:
     AnalyzedMap["IsGraph"] = std::isgraph(InputValue);
   }
   char getAnalyzedChar() const { return AnalyzedChar; }
+  auto getAnalyzedMap() const { return AnalyzedMap; };
 
 private:
   char AnalyzedChar;
@@ -66,8 +67,18 @@ private:
 std::ostream &operator<<(std::ostream &Os, StringAnalyzer const &Input)
 {
   Os << "Analyzed String: " << Input.getAnalyzedString() << "\n";
+  for (auto MapEntry : Input.getAnalyzerStringVector())
+  {
+    Os << "\tCharacter: " << MapEntry.first << "\n";
+    auto CharMap{MapEntry.second.getAnalyzedMap()};
+    for (auto CharMapElement : CharMap)
+    {
+      Os << "\t\t" << CharMapElement.first << ":\t" << std::boolalpha << CharMapElement.second
+         << "\n";
+    }
+  }
 
-  return os;
+  return Os;
 }
 
 int main()
@@ -85,8 +96,6 @@ int main()
   for (auto AnalyzedWord : AnalyzedStringVector)
   {
     std::cout << AnalyzedWord;
-    auto AnalyzedChars{AnalyzedWord.getAnalyzerStringVector()};
-    
   }
 
   return 0;
